@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:ital,wght@0,600;1,400&display=swap");
+.position-logo {
+  margin-left: 80px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+.bg-image-login {
+  background-image: url('{{ asset("assets/img/bg-login.png") }}');
+  background-repeat: no-repeat;
+  background-position: 650px -1px;
+  overflow-y: hidden;
+}
+
+.form-control {
+  height: 50px;
+  width: -20px;
+}
+.container-judul {
+  height: 30px;
+  width: 1000px;
+  position: block;
+}
+.judul-sikap {
+  font-family: "Montserrat", sans-serif;
+  font-size: 70px;
+  line-height: 0.9;
+  font-weight: 700;
+  margin-left: 120px;
+}
+.container-deskripsi {
+  height: 30px;
+  width: 1000px;
+  position: sticky;
+}
+.judul-deskripsi {
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+  margin-left: 120px;
+  color: #797979;
+}
+.wrap-login100 {
+  width: 25%;
+  margin-left: 120px;
+  padding-top: 160px;
+  background: #fff;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.btn-color {
+  background-color: #0e1c36;
+  color: #fff;
+}
+
+#NIK::placeholder {
+  color: #797979;
+}
+
+#password::placeholder {
+  color: #797979;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container-history {
+  width: 300px;
+}
+
+.tanggal-history {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.center-element {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 98%;
+}
+
+.app-header {
+  background-color: #9663fe;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.back-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.header-title {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.margin-left {
+  margin-left: 20px;
+}
+
+.icon1 {
+  background-image: url("calendar-outline.svg");
+  background-position: right;
+  margin-right: 40px;
+  background-size: 33px;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+}
