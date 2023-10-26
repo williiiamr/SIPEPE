@@ -1,0 +1,429 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+body {
+  background-color: #f0f4f9;
+  font-family: "Montserrat", sans-serif;
+}
+
+.background {
+  width: 100%;
+  height: 200px;
+  background-color: #9663fe;
+}
+
+.main {
+  height: 1000px;
+}
+
+.content {
+  width: 100%;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+a {
+  color: white;
+}
+
+.appeal {
+  width: 100%;
+  height: 185px;
+  color: #9663fe;
+}
+
+.reminder {
+  width: 200px;
+  height: 100%;
+  font-size: medium;
+}
+
+.status {
+  width: 49%;
+  height: 90px;
+}
+
+.small-font {
+  font-size: 16px;
+}
+
+.medium-font {
+  font-size: 24px;
+}
+
+.purple {
+  color: #9663fe;
+}
+
+.info-container {
+  height: 75px;
+}
+
+.information {
+  width: 90%;
+}
+
+.days {
+  font-size: 10px;
+  color: #747474;
+}
+
+.bottom-bar {
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 65px;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.175);
+}
+
+.menu-text {
+  font-size: 12px;
+}
+
+.menu {
+  width: 100px;
+  height: 100%;
+}
+
+.selected {
+  color: #9663fe;
+  font-weight: bolder;
+}
+
+.bottom-bar > a:link {
+  text-decoration: none;
+}
+
+.bottom-bar > a:visited {
+  text-decoration: none;
+}
+
+.bottom-bar > a:hover {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.bottom-bar > a:active {
+  text-decoration: underline;
+}
+
+.bottom-bar > a {
+  color: black;
+}
+
+.dropbtn {
+  background-color: #9663fe;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+  text-decoration: underline;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  max-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+@media only screen and (max-width: 576px) {
+  .appeal {
+    margin: 100px 25px 0 25px;
+    width: 87.5%;
+    padding-bottom: 15px;
+  }
+
+  .background {
+    width: 100%;
+    height: 100px;
+    background-color: #9663fe;
+  }
+
+  .reminder {
+    font-size: 12px;
+  }
+
+  .small-font {
+    font-size: 12px;
+  }
+
+  .medium-font {
+    font-size: 18px;
+  }
+
+  .status {
+    width: 45%;
+  }
+
+  .status-container {
+    padding: 0 25px;
+  }
+
+  .subtitle {
+    margin: 0 25px;
+  }
+
+  .info-row {
+    margin: 0 25px;
+  }
+
+  .info-text {
+    font-size: 5px;
+  }
+
+  .bottom-bar {
+    position: sticky;
+    bottom: 0;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown .dropdown-menu,
+.dropup .dropdown-menu {
+    border: 1px solid transparent;
+    min-width: 120px;
+    padding: 8px 0;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
+
+.dropdown .dropdown-menu .dropdown-item,
+.dropup .dropdown-menu .dropdown-item {
+    padding: 12px 16px;
+    line-height: 1.2em;
+    color: #141515;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown .dropdown-menu .dropdown-item:hover,
+.dropdown .dropdown-menu .dropdown-item:active,
+.dropup .dropdown-menu .dropdown-item:hover,
+.dropup .dropdown-menu .dropdown-item:active {
+    background: rgba(225, 225, 225, 0.5);
+    color: #141515;
+}
+
+.dropdown .dropdown-menu .dropdown-divider,
+.dropup .dropdown-menu .dropdown-divider {
+    border-top: 1px solid #e1e1e1;
+}
+
+.dropdown .dropdown-menu .dropdown-header,
+.dropup .dropdown-menu .dropdown-header {
+    padding: 9px 16px;
+    color: #4f5050;
+    font-weight: 400;
+    font-size: 11px;
+}
+
+.dropdown .dropdown-menu .text,
+.dropup .dropdown-menu .text {
+    padding: 9px 16px;
+    color: #4f5050;
+}
+
+.dropdown .dropdown-menu i.icon,
+.dropdown .dropdown-menu ion-icon,
+.dropup .dropdown-menu i.icon,
+.dropup .dropdown-menu ion-icon {
+    margin-right: 10px;
+    width: 22px;
+    height: 22px;
+    font-size: 22px;
+    justify-content: center;
+    align-items: center;
+    line-height: 1em;
+    display: inline-flex;
+    color: #141515;
+}
+
+.dropdown-toggle:after {
+  border-radius: 4px;
+  margin-left: 7px;
+}
+fab-button.animate.dropdown.show .fab ion-icon[name="add"],
+.fab-button.animate.dropdown.show .fab ion-icon[name="add-sharp"],
+.fab-button.animate.dropdown.show .fab ion-icon[name="add-outline"] {
+    transform: rotate(45deg);
+}
+
+.fab-button.dropdown.show .fab {
+    background: #0564fd;
+}
+
+.fab-button .dropdown-menu {
+    margin: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0px 7px;
+    width: 56px;
+    min-width: 56px;
+    max-width: 56px;
+    text-align: center;
+}
+
+.fab-button .dropdown-menu .dropdown-item {
+    padding: 0;
+    background: #1e74fd;
+    width: 42px;
+    height: 42px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin: 14px 0;
+    border-radius: 100%;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
+
+.fab-button .dropdown-menu .dropdown-item:hover,
+.fab-button .dropdown-menu .dropdown-item:active {
+    background: #1e74fd;
+}
+
+.fab-button .dropdown-menu .dropdown-item i.icon,
+.fab-button .dropdown-menu .dropdown-item ion-icon {
+    --ionicon-stroke-width: 32px;
+    line-height: 1em;
+    margin-right: 0;
+    color: #fff !important;
+    width: 24px !important;
+    height: 24px !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    line-height: 1em;
+    display: inline-flex;
+}
+
+.fab-button .dropdown-menu .dropdown-item p {
+    background: #fff;
+    position: absolute;
+    left: 58px;
+    color: #141515;
+    font-size: 13px;
+    padding: 4px 12px;
+    line-height: 1.5em;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
+.fab-button.top-right .dropdown-menu .dropdown-item p,
+.fab-button.bottom-right .dropdown-menu .dropdown-item p {
+    left: auto;
+    right: 58px;
+}
+
+body.dark-mode-active .dropdown .dropdown-menu,
+body.dark-mode-active .dropup .dropdown-menu {
+    background: #0c1624;
+    border: 1px solid #1b283b;
+}
+
+body.dark-mode-active .dropdown .dropdown-menu .dropdown-item,
+body.dark-mode-active .dropup .dropdown-menu .dropdown-item {
+    color: #ffffff;
+}
+
+body.dark-mode-active .dropdown .dropdown-menu .dropdown-item:hover,
+body.dark-mode-active .dropdown .dropdown-menu .dropdown-item:active,
+body.dark-mode-active .dropup .dropdown-menu .dropdown-item:hover,
+body.dark-mode-active .dropup .dropdown-menu .dropdown-item:active {
+    background: rgba(27, 40, 59, 0.5) !important;
+    color: #ffffff;
+}
+
+body.dark-mode-active .dropdown .dropdown-menu .dropdown-divider,
+body.dark-mode-active .dropup .dropdown-menu .dropdown-divider {
+    border-top-color: #1b283b !important;
+}
+
+body.dark-mode-active .dropdown .dropdown-menu .dropdown-header,
+body.dark-mode-active .dropup .dropdown-menu .dropdown-header {
+    color: #8195a6;
+}
+
+body.dark-mode-active .dropdown .dropdown-menu .text,
+body.dark-mode-active .dropup .dropdown-menu .text {
+    color: #8195a6;
+}
+
+body.dark-mode-active .dropdown .dropdown-menu i.icon,
+body.dark-mode-active .dropdown .dropdown-menu ion-icon,
+body.dark-mode-active .dropup .dropdown-menu i.icon,
+body.dark-mode-active .dropup .dropdown-menu ion-icon {
+    color: #ffffff;
+}
+
+body.dark-mode-active .fab-button .dropdown-menu {
+  background: transparent;
+  border-color: transparent;
+}
+
