@@ -1,23 +1,23 @@
-<div class="presencetab">
-    <div class="tab-content" style="margin-bottom:100px;">
-        <div class="tab-pane fade show active" id="home" role="tabpanel">
-            <ul class="listview image-listview" style="border-radius: 20px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; margin: 10px; padding: 5px;">
-                @foreach ($history as $d)
-                    <li>
-                        <div class="item" style='width:92vw;'>
-                            <div class="icon-box bg-primary">
-                                <ion-icon name="image-outline" role="img" class="md hydrated"
-                                    aria-label="image outline"></ion-icon>
-                            </div>
-                            <div class="in">
-                                <div>{{ date('Y-m-d', strtotime($d->tgl_presensi)) }}</div>
-                                <span class="badge gradasigreen">{{ $d->jam_in }}</span>
-                                <span class="badge badge-danger">{{ $d->jam_out }}</span>
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>    
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href={{ asset("assets/css/login_history.css") }}  />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="" style="border-radius: 20px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; margin: 10px; padding: 5px">
+      @foreach ($history as $d)
+      <li>
+        <div class="date-history">
+          {{ date('Y-m-d', strtotime($d->tgl_presensi)) }}
+          <span class="badge gradasigreen">{{ $d->jam_in }}</span>
+          <span class="badge badge-danger">{{ $d->jam_out }}</span>
         </div>
-    </div>
-</div>  
+      </li>
+      @endforeach
+    </ul>
+  </body>
+</html>
