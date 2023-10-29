@@ -61,7 +61,7 @@
             <div class='row'>
                 <div class="col-12">
                     <div class='form-group caridata-history' >
-                        <button class='btn btn-block text-light w-100'  style="background-color: #203585;" id='getdata'>Cari Data</button>
+                        <button class='btn btn-block text-light w-100'  style="background-color: #5236FF;" id='getdata'>Cari Data</button>
                     </div>
                 </div>
             </div>

@@ -15,15 +15,11 @@
     <div class="d-flex align-items-center mx-3">
       <img class="mx-2 img-fluid" width="40" height="40" src="{{ asset("assets/img/profil.png") }}" alt="" /> 
       <div class="dropdown">
-        <button>
-            {{ Auth::guard('karyawan')->user()->nama }}
-        </button>
-        <div class="arrow-down">
+        <button onclick="myFunction()" class="dropbtn">{{ Auth::guard('karyawan')->user()->nama }} <i class="fa fa-caret-down"></i></button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="/proseslogout" onclick="showSuccess()">Log Out</a>
         </div>
-        <div class="dropdown-content">
-            <a href="/proseslogout" onclick="showSuccess()">Log out</a>
-        </div>
-    </div>
+      </div>
     </div>
   </div>
   <div class="appeal bg-white rounded-5 shadow">
@@ -96,3 +92,23 @@
   </div>
 </div>
 @endsection
+@push('myscript')
+<script>
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  window.onclick = function (event) {
+    if (!event.target.matches(".dropbtn")) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains("show")) {
+          openDropdown.classList.remove("show");
+        }
+      }
+    }
+  };
+</script>
+@endpush
