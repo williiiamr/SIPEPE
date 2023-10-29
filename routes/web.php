@@ -47,6 +47,14 @@ Route::middleware(['auth:karyawan'])->group(function (){
     Route::get('/history', [HistoryController::class, 'history']);
 
     Route::post('/gethistori', [HistoryController::class, 'gethistori']);
+
+    //Izin
+    Route::get('/presensi/izin', [PresensiController::class, 'izin']);
+    Route::get('/presensi/buatizin', [PresensiController::class, 'buatizin']);
+    Route::post('/presensi/storeizin', [PresensiController::class, 'storeizin']);
+    Route::post('/presensi/cekpengajuanizin', [PresensiController::class, 'cekpengajuanizin']);
+
+    Route::get('download-pdf', [PostController::class, 'downloadPDF']);
     
 });
 
@@ -64,6 +72,9 @@ Route::middleware(['auth:user'])->group(function (){
     Route::post('/getpresensi', [PresensiController::class, 'getpresensi']);
     Route::get('/presensi/laporan', [PresensiController::class, 'laporan']);
     Route::post('/presensi/cetak', [PresensiController::class, 'cetak']);
+    Route::get('/presensi/izinsakit', [PresensiController::class, 'izinsakit']);
+    Route::post('/presensi/approveizinsakit', [PresensiController::class, 'approveizinsakit']);
+    Route::get('/presensi/{id}/batalkanizinsakit', [PresensiController::class, 'batalkanizinsakit']);
 
     Route::get('/settings', [KaryawanController::class, 'setting']);
     Route::post('/settings/update', [KaryawanController::class, 'updateSetting']);

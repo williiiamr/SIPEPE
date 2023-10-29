@@ -23,7 +23,14 @@ class DashboardController extends Controller
             ->whereRaw('YEAR(tgl_presensi)="' . $tahunini . '"')
             ->first();
 
-        return view('dashboard.dashboard', compact('presensihariini', 'bulanini', 'tahunini', 'rekap'));
+        $rekapizin = DB::table('pengajuan_izin')
+        ->selectRaw('SUM(IF(status="i",1,0)) as jmlizin, SUM(IF(status="s",1,0)) as jmlsakit')
+        ->where('nik', $nik)
+        ->whereRaw('MONTH(tgl_izin)="' . $bulanini . '"')
+        ->whereRaw('YEAR(tgl_izin)="' . $tahunini . '"')
+        ->where('status_approved', 1)
+        ->first();
+        return view('dashboard.dashboard', compact('presensihariini', 'bulanini', 'tahunini', 'rekap', 'rekapizin'));
     }
 
     public function admindashboard(){

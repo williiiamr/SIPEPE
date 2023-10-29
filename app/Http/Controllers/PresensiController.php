@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Pengajuanizin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -27,16 +28,8 @@ class PresensiController extends Controller
         //-6.224833003263079, 106.6498009576709
         // -6.397327086594367, 106.83687347311667
         //-6.397319890760971, 106.83686828415709
-        // -5.401364963226844, 105.27754596278925
-<<<<<<< HEAD
-        //-5.360147225249623, 105.31348411650904
-        $latitudekantor = -5.360147225249623; 
-        $longitudekantor = 105.31348411650904;
-=======
-        // -5.396852, 105.277913
-        $latitudekantor = -5.396852; 
-        $longitudekantor = 105.277913;
->>>>>>> 8a5a108d6ce75928038faca40712bb2c2ac0340a
+        $latitudekantor = -6.397319890760971; 
+        $longitudekantor = 106.83686828415709;
         $location = explode(',', $lokasi);
         $latitude = $location[0];
         $longitude = $location[1];
@@ -63,9 +56,6 @@ class PresensiController extends Controller
             echo "Radius_Error|Anda Berada di Luar Radius";
         }else{
             if ($cek > 0){
-                if($jam < "17:00"){
-                    echo "Error|Belum Jam Pulang";
-                }else{
                 $data_pulang = [
                     'jam_out' => $jam,
                     'foto_out' => $fileName,
@@ -78,7 +68,6 @@ class PresensiController extends Controller
                 }else{
                     echo "Error|Gagal absen";
                 }
-            }
             }else{
             $data = [
                 'nik' => $nik,
@@ -223,6 +212,99 @@ class PresensiController extends Controller
         ->get();
 
         return view('presensi.cetaklaporan', compact('bulan', 'tahun', 'namabulan', 'presensi'));
+    }
+
+    public function izin()
+    {
+        $nik = Auth::guard('karyawan')->user()->nik;
+        $dataizin = DB::table('pengajuan_izin')->where('nik',$nik)->get();
+        return view('presensi.izin', compact('dataizin'));
+    }
+
+    public function buatizin()
+    {
+        
+        return view('presensi.buatizin');
+    }
+
+    public function storeizin(Request $request)
+    {
+        $nik = Auth::guard('karyawan')->user()->nik;
+        $tgl_izin = $request->tgl_izin;
+        $status = $request->status;
+        $keterangan = $request->keterangan;
+
+        $data = [
+            'nik' => $nik,
+            'tgl_izin' => $tgl_izin,
+            'status' => $status,
+            'keterangan' => $keterangan,
+        ];
+
+        $simpan = DB::table('pengajuan_izin')->insert($data);
+
+        if ($simpan) {
+            return redirect('/presensi/izin')->with(['succes' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect('/presensi/izin')->with(['error' => 'Data Gagal Disimpan']);
+        }
+    }
+
+    public function izinsakit(Request $request){
+        $query = Pengajuanizin::query();
+        $query->select('id','tgl_izin','pengajuan_izin.nik','nama','jabatan','status','status_approved','keterangan');
+        $query->join('karyawan','pengajuan_izin.nik','=','karyawan.nik');
+        if(!empty($request->dari) && !empty($request->sampai)){
+            $query->whereBetween('tgl_izin',[$request->dari,$request->sampai]);
+        }
+
+        if(!empty($request->nik)){
+            $query->where('pengajuan_izin.nik',$request->nik);
+        }
+
+        if(!empty($request->nama)){
+            $query->where('nama','like', '%'. $request->nama .'%');
+        }
+
+        if($request->status_approved === '0' || $request->status_approved === '1' || $request->status_approved === '2'){
+            $query->where('status_approved',$request->status_approved);
+        }
+        $query->orderBy('tgl_izin','desc');
+        $izinsakit = $query->paginate(5);
+        $izinsakit->appends($request->all());
+        return view('presensi.izinsakit', compact('izinsakit'));
+    }
+
+    public function approveizinsakit(Request $request){
+        $status_approved = $request->status_approved;
+        $id_izinsakit_form = $request->id_izinsakit_form;
+        $update = DB::table('pengajuan_izin')->where('id', $id_izinsakit_form)->update([
+            'status_approved' => $status_approved
+        ]);
+        if($update){
+            return Redirect::back()->with(['succes' => 'Data Berhasil Di Update']);
+        }else{
+            return Redirect::back()->with(['succes' => 'Data Gagal Di Update']);
+        }
+    }
+
+    public function batalkanizinsakit($id){
+        $update = DB::table('pengajuan_izin')->where('id', $id)->update([
+            'status_approved' => 0
+        ]);
+        if($update){
+            return Redirect::back()->with(['succes' => 'Data Berhasil Di Update']);
+        }else{
+            return Redirect::back()->with(['succes' => 'Data Gagal Di Update']);
+        }
+    }
+
+    public function cekpengajuanizin(Request $request){
+        $tgl_izin = $request->tgl_izin;
+        $nik = Auth::guard('karyawan')->user()->nik;
+
+        $cek = DB::table('pengajuan_izin')->where('nik', $nik)->where('tgl_izin', $tgl_izin)->count();
+        return $cek;
     }
 
 }
