@@ -99,8 +99,8 @@ a {
   height: 100%;
 }
 
-.selected {
-  color: #9663fe;
+.active {
+  color: #9663fe !important;
   font-weight: bolder;
 }
 
