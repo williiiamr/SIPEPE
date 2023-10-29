@@ -1,450 +1,449 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:ital,wght@0,600;1,400&display=swap");
 /*Login Karyawan*/
 .position-logo {
-  margin-left: 80px;
-  margin-top: 20px;
-  margin-bottom: 100px;
+    margin-left: 80px;
+    margin-top: 20px;
+    margin-bottom: 100px;
 }
 .bg-image-login {
-  background-repeat: no-repeat;
-  background-position: 650px -1px;
-  overflow-y: hidden;
+    background-repeat: no-repeat;
+    background-position: 650px -1px;
+    overflow-y: hidden;
 }
 
 .form-control {
-  height: 50px;
-  width: -20px;
-}
-.container-judul {
-  height: 30px;
-  width: 1000px;
-  position: block;
-}
-.judul-sikap {
-  font-family: "Montserrat", sans-serif;
-  font-size: 70px;
-  line-height: 0.9;
-  font-weight: 700;
-  margin-left: 120px;
-}
-.container-deskripsi {
-  height: 30px;
-  width: 1000px;
-  position: sticky;
-}
-.judul-deskripsi {
-  font-family: "Montserrat", sans-serif;
-  font-size: 25px;
-  margin-left: 120px;
-  color: #797979;
-}
-.wrap-login100 {
-  width: 25%;
-  margin-left: 120px;
-  padding-top: 160px;
-  background: #fff;
-  flex-wrap: wrap;
-  align-items: stretch;
-}
-.btn-color {
-  background-color: #0e1c36;
-  color: #fff;
-}
-
-#NIK::placeholder {
-  color: #797979;
-}
-
-#password::placeholder {
-  color: #797979;
-}
-
-a {
-  text-decoration: none;
-}
-
-@media only screen and (max-width: 576px) {
-  .position-logo {
-    margin-left: 0px;
-    margin-top: 20px;
-    margin-bottom: 100px;
-  }
-  .bg-image-login {
-    background-color: #a168fe;
-  }
-  #bg {
-    background-image: url('assets/img/mobile.png');
-    height: 300px;
-    background-size: 400px;
-    background-position: 0px 70px;
-    background-repeat: no-repeat;
-  }
-
-  .radius {
-    height: 100%;
-    width: 100%;
-    margin-top: -100px;
-    padding-top: 40px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    background-color: #ffffff;
-    position: absolute;
-  }
-  .form-control {
     height: 50px;
     width: -20px;
-  }
-  .container-judul {
-    height: 20px;
-    margin-left: -80px;
-    width: 450px;
-  }
-  .judul-sikap {
-    font-family: "Montserrat", sans-serif;
-    font-size: 25px;
-    line-height: 0.9;
-    font-weight: 700;
-  }
-  .container-deskripsi {
+}
+.container-judul {
     height: 30px;
     width: 1000px;
-  }
-  .judul-deskripsi {
+    position: block;
+}
+.judul-sikap {
     font-family: "Montserrat", sans-serif;
-    font-size: 15px;
+    font-size: 70px;
+    line-height: 0.9;
+    font-weight: 700;
+    margin-left: 120px;
+}
+.container-deskripsi {
+    height: 30px;
+    width: 1000px;
+    position: sticky;
+}
+.judul-deskripsi {
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    margin-left: 120px;
     color: #797979;
-  }
-  .wrap-login100 {
-    width: 75%;
-    margin: auto;
-    padding-top: 40px;
+}
+.wrap-login100 {
+    width: 25%;
+    margin-left: 120px;
+    padding-top: 160px;
     background: #fff;
     flex-wrap: wrap;
     align-items: stretch;
-  }
-  .btn-color {
+}
+.btn-color {
     background-color: #0e1c36;
     color: #fff;
-  }
+}
 
-  #NIK::placeholder {
+#NIK::placeholder {
     color: #797979;
-  }
+}
 
-  #password::placeholder {
+#password::placeholder {
     color: #797979;
-  }
+}
 
-  a {
+a {
     text-decoration: none;
-  }
+}
+
+@media only screen and (max-width: 576px) {
+    .position-logo {
+        margin-left: 0px;
+        margin-top: 20px;
+        margin-bottom: 100px;
+    }
+    .bg-image-login {
+        background-color: #a168fe;
+    }
+    #bg {
+        background-image: url("assets/img/mobile.png");
+        height: 300px;
+        background-size: 400px;
+        background-position: 0px 70px;
+        background-repeat: no-repeat;
+    }
+
+    .radius {
+        height: 100%;
+        width: 100%;
+        margin-top: -100px;
+        padding-top: 40px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        background-color: #ffffff;
+        position: absolute;
+    }
+    .form-control {
+        height: 50px;
+        width: -20px;
+    }
+    .container-judul {
+        height: 20px;
+        margin-left: -80px;
+        width: 450px;
+    }
+    .judul-sikap {
+        font-family: "Montserrat", sans-serif;
+        font-size: 25px;
+        line-height: 0.9;
+        font-weight: 700;
+    }
+    .container-deskripsi {
+        height: 30px;
+        width: 1000px;
+    }
+    .judul-deskripsi {
+        font-family: "Montserrat", sans-serif;
+        font-size: 15px;
+        color: #797979;
+    }
+    .wrap-login100 {
+        width: 75%;
+        margin: auto;
+        padding-top: 40px;
+        background: #fff;
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+    .btn-color {
+        background-color: #0e1c36;
+        color: #fff;
+    }
+
+    #NIK::placeholder {
+        color: #797979;
+    }
+
+    #password::placeholder {
+        color: #797979;
+    }
+
+    a {
+        text-decoration: none;
+    }
 }
 
 /*History Karyawan*/
 .container-history {
-  width: 300px;
+    width: 300px;
 }
 
 .tanggal-history {
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  margin-left: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
 }
 
 .center-element {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn {
-  width: 98%;
+    width: 98%;
 }
 
 .app-header {
-  background-color: #9663fe;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
+    background-color: #9663fe;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
 }
 
 .back-button {
-  background-color: transparent;
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .header-title {
-  margin: 0;
-  padding: 0;
-  font-size: 24px;
-  color: #fff;
-  text-align: center;
-  flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    flex-grow: 1;
 }
 
 .margin-left {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .icon1 {
-  background-image: url("calendar-outline.svg");
-  background-position: right;
-  margin-right: 40px;
-  background-size: 33px;
-  background-repeat: no-repeat;
-  border-radius: 8px;
+    background-image: url("calendar-outline.svg");
+    background-position: right;
+    margin-right: 40px;
+    background-size: 33px;
+    background-repeat: no-repeat;
+    border-radius: 8px;
 }
 
 /*History Karyawan*/
 .container-history {
-  width: 300px;
+    width: 300px;
 }
 
 .tanggal-history {
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  margin-left: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
 }
 
 .center-element {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn {
-  width: 98%;
+    width: 98%;
 }
 
 .app-header {
-  background-color: #9663fe;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
+    background-color: #9663fe;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
 }
 
 .back-button {
-  background-color: transparent;
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .header-title {
-  margin: 0;
-  padding: 0;
-  font-size: 24px;
-  color: #fff;
-  text-align: center;
-  flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    flex-grow: 1;
 }
 
 .margin-left {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .icon1 {
-  background-image: url("calendar-outline.svg");
-  background-position: right;
-  margin-right: 40px;
-  background-size: 33px;
-  background-repeat: no-repeat;
-  border-radius: 8px;
+    background-image: url("calendar-outline.svg");
+    background-position: right;
+    margin-right: 40px;
+    background-size: 33px;
+    background-repeat: no-repeat;
+    border-radius: 8px;
 }
 
 .appBottomMenu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f8f8f8;
-  padding: 12px;
-  border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 12px;
+    border-top: 1px solid #ccc;
 }
 
 .appBottomMenu a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
-  transition: transform 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s, color 0.3s;
 }
 
 .appBottomMenu a:hover {
-  transform: translateY(-5px);
-  color: #007bff;
+    transform: translateY(-5px);
+    color: #007bff;
 }
 
 .appBottomMenu .col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-
 .appBottomMenu {
-  min-height: 56px;
-  position: fixed;
-  z-index: 999;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top: 1px solid #e1e1e1;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-bottom: env(safe-area-inset-bottom);
+    min-height: 56px;
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #e1e1e1;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .appBottomMenu.no-border {
-  border: 0 !important;
-  box-shadow: 0 !important;
+    border: 0 !important;
+    box-shadow: 0 !important;
 }
 
 .appBottomMenu.rounded {
-  border-radius: 24px 24px 0 0 !important;
+    border-radius: 24px 24px 0 0 !important;
 }
 
 .appBottomMenu.rounded .item:before {
-  display: none;
+    display: none;
 }
 
 .appBottomMenu .item {
-  font-size: 9px;
-  letter-spacing: 0;
-  text-align: center;
-  width: 100%;
-  height: 56px;
-  line-height: 1.2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+    font-size: 9px;
+    letter-spacing: 0;
+    text-align: center;
+    width: 100%;
+    height: 56px;
+    line-height: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .appBottomMenu .item:before {
-  content: "";
-  display: block;
-  height: 2px;
-  border-radius: 0 0 10px 10px;
-  background: transparent;
-  position: absolute;
-  left: 4px;
-  right: 4px;
-  top: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    border-radius: 0 0 10px 10px;
+    background: transparent;
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    top: 0;
 }
 
 .appBottomMenu .item .col {
-  width: 100%;
-  padding: 0 4px;
-  text-align: center;
+    width: 100%;
+    padding: 0 4px;
+    text-align: center;
 }
 
 .appBottomMenu .item i.icon,
 .appBottomMenu .item ion-icon {
-  display: inline-flex;
-  margin: 1px auto 3px auto;
-  font-size: 26px;
-  line-height: 1em;
-  color: #141515;
-  transition: 0.1s all;
-  display: block;
-  margin-top: 1px;
-  margin-bottom: 3px;
+    display: inline-flex;
+    margin: 1px auto 3px auto;
+    font-size: 26px;
+    line-height: 1em;
+    color: #141515;
+    transition: 0.1s all;
+    display: block;
+    margin-top: 1px;
+    margin-bottom: 3px;
 }
 
 .appBottomMenu .item .action-button {
-  display: inline-flex;
-  width: 50px;
-  height: 50px;
-  margin-left: -5px;
-  margin-right: -5px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 200px;
-  background: #1e74fd;
+    display: inline-flex;
+    width: 50px;
+    height: 50px;
+    margin-left: -5px;
+    margin-right: -5px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 200px;
+    background: #1e74fd;
 }
 
 .appBottomMenu .item .action-button.large {
-  width: 60px;
-  height: 60px;
-  margin-top: -20px;
-  margin-left: -10px;
-  margin-right: -10px;
+    width: 60px;
+    height: 60px;
+    margin-top: -20px;
+    margin-left: -10px;
+    margin-right: -10px;
 }
 
 .appBottomMenu .item .action-button i.icon,
 .appBottomMenu .item .action-button ion-icon {
-  color: #fff !important;
-  margin: 0 !important;
-  line-height: 0 !important;
+    color: #fff !important;
+    margin: 0 !important;
+    line-height: 0 !important;
 }
 
 .appBottomMenu .item strong {
-  margin-top: 4px;
-  display: block;
-  color: #141515;
-  font-weight: 400;
-  transition: 0.1s all;
+    margin-top: 4px;
+    display: block;
+    color: #141515;
+    font-weight: 400;
+    transition: 0.1s all;
 }
 
 .appBottomMenu .item:active {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
 .appBottomMenu .item.active:before {
-  background: transparent;
+    background: transparent;
 }
 
 .appBottomMenu .item.active i.icon,
 .appBottomMenu .item.active ion-icon,
 .appBottomMenu .item.active strong {
-  color: #1e74fd !important;
-  font-weight: 500;
+    color: #1e74fd !important;
+    font-weight: 500;
 }
 
 .appBottomMenu .item:hover i.icon,
 .appBottomMenu .item:hover ion-icon,
 .appBottomMenu .item:hover strong {
-  color: #141515;
+    color: #141515;
 }
 
 .appBottomMenu.text-light {
-  color: #fff;
+    color: #fff;
 }
 
 .appBottomMenu.text-light .item {
-  color: #fff;
-  opacity: 0.7;
+    color: #fff;
+    opacity: 0.7;
 }
 
 .appBottomMenu.text-light .item i.icon,
 .appBottomMenu.text-light .item ion-icon,
 .appBottomMenu.text-light .item strong {
-  color: #fff;
+    color: #fff;
 }
 
 .appBottomMenu.text-light .item.active {
-  opacity: 1;
+    opacity: 1;
 }
 
 .appBottomMenu.text-light .item.active i.icon,
 .appBottomMenu.text-light .item.active ion-icon,
 .appBottomMenu.text-light .item.active strong {
-  color: #fff !important;
+    color: #fff !important;
 }
 
 .appBottomMenu.bg-primary,
@@ -455,7 +454,7 @@ a {
 .appBottomMenu.bg-info,
 .appBottomMenu.bg-light,
 .appBottomMenu.bg-dark {
-  border: 0;
+    border: 0;
 }
 
 .appBottomMenu.bg-primary .item:before,
@@ -466,41 +465,110 @@ a {
 .appBottomMenu.bg-info .item:before,
 .appBottomMenu.bg-light .item:before,
 .appBottomMenu.bg-dark .item:before {
-  display: none;
+    display: none;
 }
 
 .badge {
-  font-size: 12px;
-  line-height: 1em;
-  border-radius: 100px;
-  letter-spacing: 0;
-  height: 22px;
-  min-width: 22px;
-  padding: 0 6px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 400;
-  margin-left: 600px;
+    font-size: 12px;
+    line-height: 1em;
+    border-radius: 100px;
+    letter-spacing: 0;
+    height: 22px;
+    min-width: 22px;
+    padding: 0 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    margin-left: 600px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .badge-danger,
 a.badge-danger {
-  background: #ec4433 !important;
+    background: #ec4433 !important;
 }
 
 .gradasigreen {
-  color: white;
-  background-image: linear-gradient(to bottom right, rgba(21, 189, 74, 1), rgba(21, 189, 74, 0.8));
+    color: white;
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(21, 189, 74, 1),
+        rgba(21, 189, 74, 0.8)
+    );
 }
 
-.date-history {
-  margin-left: 5px;
-}
 .border-history {
-  width: 100%;
-  margin-bottom: 10px;
-  background-color: #0e1c36;
-  border-bottom: 1px solid #99e7ff;
-  margin-top: 10px;
+    width: 100%;
+    background-color: #0e1c36;
+    border-bottom: 1px solid #99e7ff;
+}
+
+.ul-history {
+    width: 98%;
+    margin: auto;
+}
+
+.caridata-history {
+    width: 98%;
+    margin: auto;
+}
+ul {
+    list-style-type: none;
+    font-size: 18px;
+    margin: auto;
+}
+@media only screen and (max-width: 576px) {
+    .badge {
+        font-size: 12px;
+        line-height: 1em;
+        border-radius: 100px;
+        letter-spacing: 0;
+        height: 22px;
+        min-width: 22px;
+        padding: 0 6px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        margin-left: 35px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .badge-danger,
+    a.badge-danger {
+        background: #ec4433 !important;
+    }
+
+    .gradasigreen {
+        color: white;
+        background-image: linear-gradient(
+            to bottom right,
+            rgba(21, 189, 74, 1),
+            rgba(21, 189, 74, 0.8)
+        );
+    }
+
+    .border-history {
+        width: 100%;
+        background-color: #0e1c36;
+        border-bottom: 1px solid #99e7ff;
+    }
+
+    .ul-history {
+        width: 98%;
+        margin: auto;
+    }
+
+    .caridata-history {
+        width: 98%;
+        margin: auto;
+    }
+    ul {
+        list-style-type: none;
+        font-size: 18px;
+        margin: auto;
+    }
 }

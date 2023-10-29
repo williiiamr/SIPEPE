@@ -37,7 +37,7 @@
         <div class='col'>
             <div class='row'>
                 <div class="col-12">
-                    <div class='form-group'>
+                    <div class='form-group caridata-history mb-2'>
                         <select name='bulan' id='bulan' class="form-control">
                             <option value=''>Bulan</option>
                             @for ($i=1; $i<=12; $i++)
@@ -49,7 +49,7 @@
             </div>
             <div class='row'>
                 <div class="col-12">
-                    <div class='form-group'>
+                    <div class='form-group caridata-history'>
                         <select name='tahun' id='tahun' class="form-control">
                             <option value=''>Tahun</option>
                             @for ($tahun = 2022; $tahun<=date('Y'); $tahun++)
@@ -62,7 +62,7 @@
             <br>
             <div class='row'>
                 <div class="col-12">
-                    <div class='form-group' >
+                    <div class='form-group caridata-history' >
                         <button class='btn btn-block text-light w-100'  style="background-color: #203585;" id='getdata'>Cari Data</button>
                     </div>
                 </div>

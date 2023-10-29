@@ -8,7 +8,7 @@
     <title>Document</title>
   </head>
   <body>
-    <ul class="" style="border-radius: 20px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; margin: 10px; padding: 5px">
+    <ul class="ul-history mt-3" style="border-radius: 20px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
       @foreach ($history as $d)
       <li>
         <div class="date-history">

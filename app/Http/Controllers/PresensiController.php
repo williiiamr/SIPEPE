@@ -28,8 +28,9 @@ class PresensiController extends Controller
         // -6.397327086594367, 106.83687347311667
         //-6.397319890760971, 106.83686828415709
         // -5.401364963226844, 105.27754596278925
-        $latitudekantor = -5.401364963226844; 
-        $longitudekantor = 105.27754596278925;
+        //-5.360147225249623, 105.31348411650904
+        $latitudekantor = -5.360147225249623; 
+        $longitudekantor = 105.31348411650904;
         $location = explode(',', $lokasi);
         $latitude = $location[0];
         $longitude = $location[1];
