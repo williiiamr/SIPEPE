@@ -20,29 +20,3 @@
         </a>
     </div>
 </div>
-<!-- * App Bottom Menu -->
-
-
-
-{{-- 
-<a href="/dashboard" class="item {{ request()->is('dashboard') ? 'active' : '' }}">
-    <div class="col4">
-    <img src="../../assets/image/home.png" alt="images" class="icon-size2">
-        <h5>Home</h5>
-    </div>
-</a>
-
-<a href="/presensi/create" class="item">
-    <div class="col">
-        <div class="action-button large mb-5">
-        <img src="../../assets/image/presensi.png" alt="images" class="icon-size2">
-         </div>
-    </div>
-</a>
-
-<a href="/history" class="item {{ request()->is('history') ? 'active' : '' }}">
-    <div class="col4">
-    <img src="../../assets/image/history.png" alt="imasges" class="icon-size2" style="margin-top: -2px;">
-        <h5>History</h5>
-    </div>
-</a> --}}
