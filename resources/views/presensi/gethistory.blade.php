@@ -10,13 +10,8 @@
   <body>
     <ul class="ul-history mt-3" style="border-radius: 20px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
       @foreach ($history as $d)
-<<<<<<< HEAD
       <li>
         <div class="text-date" style="margin-left: 30px;">
-=======
-      <li style="border-bottom: 1px solid;">
-        <div class="date-history">
->>>>>>> 9e3033d0560ea217220fd973fe3816870b803d56
           {{ date('Y-m-d', strtotime($d->tgl_presensi)) }}
           <span class="badge badge-red gradasigreen">{{ $d->jam_in }}</span>
           <span class="badge badge-danger">{{ $d->jam_out }}</span>
