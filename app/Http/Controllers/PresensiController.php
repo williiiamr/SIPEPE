@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
+use PDF;
+
 class PresensiController extends Controller
 {
     public function create(){
@@ -305,6 +307,14 @@ class PresensiController extends Controller
 
         $cek = DB::table('pengajuan_izin')->where('nik', $nik)->where('tgl_izin', $tgl_izin)->count();
         return $cek;
+    }
+
+    public function suratcuti()
+    {
+        $data = Pengajuanizin::all();
+        $pdf = PDF::loadView('presensi.suratcuti',compact('data'));
+        $pdf->setPaper('A4','potrait');
+        return $pdf->download('suratcuti.pdf');
     }
 
 }

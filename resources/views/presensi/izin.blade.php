@@ -60,13 +60,16 @@
             </div>
         </div>
         <div style="margin-right: 10px;">
-        @if ($d->status_approved == 0)
-                        <span  class="badge bg-warning">Menunggu</span>
-                        @elseif ($d->status_approved == 1)
-                        <span class="badge bg-success">Disetujui</span>
-                        @elseif ($d->status_approved == 2)
-                        <span class="badge bg-danger">Ditolak</span>
-                        @endif
+            @if ($d->status_approved == 0)
+            <span  class="badge bg-warning">Menunggu</span>
+            @elseif ($d->status_approved == 1)
+            <span class="badge bg-success">Disetujui</span>
+            @elseif ($d->status_approved == 2)
+            <span class="badge bg-danger">Ditolak</span>
+            @endif
+            <a href="/presensi/suratcuti" target="_blank">
+                <button class="btn btn-success">Unduh Surat</button>
+            </a>
         </div>
     </div>
 </div>

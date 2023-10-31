@@ -54,7 +54,8 @@ Route::middleware(['auth:karyawan'])->group(function (){
     Route::post('/presensi/storeizin', [PresensiController::class, 'storeizin']);
     Route::post('/presensi/cekpengajuanizin', [PresensiController::class, 'cekpengajuanizin']);
 
-    Route::get('download-pdf', [PostController::class, 'downloadPDF']);
+    // Bagian Surat Cuti
+    Route::get('/presensi/suratcuti', [PresensiController::class, 'suratcuti']);
     
 });
 
