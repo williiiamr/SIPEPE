@@ -67,7 +67,7 @@
         <img width="30" height="30" src="{{ asset("assets/img/iconamoon_profile-fill.png") }}" alt="" />
         <div class="ms-2 d-flex flex-column justify-content-center align-items-start">
           <div class="fs-6 fw-bold">Izin</div>
-          <div class="test fw-bold days">{{ $rekapizin->jmlizin }} Hari</div>
+          <div class="test fw-bold days">Hari</div>
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@
         <img width="30" height="30" src="{{ asset("assets/img/clarity_sad-face-solid.png") }}" alt="" />
         <div class="ms-2 d-flex flex-column justify-content-center align-items-start">
           <div class="fs-6 fw-bold">Sakit</div>
-          <div class="test fw-bold days">{{ $rekapizin->jmlsakit }} Hari</div>
+          <div class="test fw-bold days"> Hari</div>
         </div>
       </div>
     </div>

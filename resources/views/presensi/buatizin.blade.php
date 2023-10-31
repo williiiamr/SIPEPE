@@ -17,6 +17,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
 @endsection
 @section('header')
+
+    <style>
+        .datepicker-modal{
+            max-height: 350px !important;
+        }
+    </style>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <header class="app-header">
@@ -37,7 +44,13 @@
         <form method="POST" action="/presensi/storeizin" id="frmIzin">
             @csrf
             <div class="form-group">
-                <input type="text" id="tgl_izin" name="tgl_izin" class="form-control datepicker" placeholder="Tanggal">
+                <input type="text" id="tgl_izin_dari" name="tgl_izin_dari" class="form-control datepicker" placeholder="Dari Tanggal">
+            </div>
+            <div class="form-group">
+                <input type="text" id="tgl_izin_sampai" name="tgl_izin_sampai" class="form-control datepicker" placeholder="Sampai Tanggal">
+            </div>
+            <div class="form-group">
+                <input type="text" id="jml_hari" name="jml_hari" class="form-control" placeholder="Total Hari" autocomplete="off" readonly>
             </div>
             <div class="form-group">
                 <select name="status" id="status" class="form-control">
@@ -47,7 +60,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <textarea name="keterangan" id="keterangan" cols="30" rows="10" class="form-control"></textarea>
+                <textarea name="keterangan" id="keterangan" cols="30" rows="10" class="form-control" placeholder="keterangan"></textarea>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary w-100">Kirim</button>
@@ -61,44 +74,67 @@
     var currYear = (new Date()).getFullYear();
 
     $(document).ready(function() {
-      $(".datepicker").datepicker({
+        $(".datepicker").datepicker({
         format: "yyyy-mm-dd"    
-      });
+        });
+        
+        function loadjumlahhari() {
+            var dari = $("#tgl_izin_dari").val();
+            var sampai = $("#tgl_izin_sampai").val();
+            var date1 = new Date(dari);
+            var date2 = new Date(sampai);
 
-      $("#tgl_izin").change(function(e){
-        var tgl_izin = $(this).val();
-        $.ajax({
-            type: 'POST'
-            , url: '/presensi/cekpengajuanizin'
-            , data: {
-                _token: "{{ csrf_token() }}"
-                , tgl_izin: tgl_izin
-            }
-            , cache: false
-            , success: function(respond){
-                if(respond == 1){
-                    alert('Anda sudah melakukan input pengajuan izin pada tanggal tersebut !');
-                    $("#tgl_izin").val("");
+            var Difference_In_Time = date2.getTime() - date1.getTime();
+            var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+            if (dari == "" || sampai == ""){
+                var jmlhari = 0;
+            }else{
+                var jmlhari = Difference_In_Days + 1;
+            } 
+
+            $("#jml_hari").val(jmlhari + " Hari");
+        }
+
+        $("tgl_izin_dari, #tgl_izin_sampai").change(function(e){
+            loadjumlahhari();
+        });
+
+        $("#tgl_izin").change(function(e){
+            var tgl_izin = $(this).val();
+            $.ajax({
+                type: 'POST'
+                , url: '/presensi/cekpengajuanizin'
+                , data: {
+                    _token: "{{ csrf_token() }}"
+                    , tgl_izin: tgl_izin
                 }
+                , cache: false
+                , success: function(respond){
+                    if(respond == 1){
+                        alert('Anda sudah melakukan input pengajuan izin pada tanggal tersebut !');
+                        $("#tgl_izin").val("");
+                    }
+                }
+            });
+        });
+
+        $("#frmIzin").submit(function() {
+            var tgl_izin_dari = $("#tgl_izin_dari").val();
+            var tgl_izin_sampai = $("#tgl_izin_sampai").val();
+            var status = $("#status").val();
+            var keterangan = $("#keterangan").val();
+            if (tgl_izin_dari == "" || tgl_izin_sampai == "") {
+                alert('Tanggal harus diisi');
+                return false;
+            } else if (status == "") {
+                alert('Status harus diisi');
+                return false;
+            } else if (keterangan == "") {
+                alert('Keterangan harus diisi');
+                return false;
             }
         });
-      });
-
-      $("#frmIzin").submit(function() {
-        var tgl_izin = $("#tgl_izin").val();
-        var status = $("#status").val();
-        var keterangan = $("#keterangan").val();
-        if (tgl_izin == "") {
-            alert('Tanggal harus diisi');
-            return false;
-        } else if (status == "") {
-            alert('Status harus diisi');
-            return false;
-        } else if (keterangan == "") {
-            alert('Keterangan harus diisi');
-            return false;
-        }
-      });
     });
 </script>
 @endpush

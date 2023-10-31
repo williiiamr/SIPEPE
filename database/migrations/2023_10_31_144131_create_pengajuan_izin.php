@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('pengajuan_izin', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('nik');
-            $table->date('tgl_izin');
+            $table->date('tgl_izin_dari');
+            $table->date('tgl_izin_sampai');
             $table->char('status');
             $table->text('keterangan')->nullable();
             $table->char('status_approved')->default(0);

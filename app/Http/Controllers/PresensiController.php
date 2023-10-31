@@ -230,13 +230,15 @@ class PresensiController extends Controller
     public function storeizin(Request $request)
     {
         $nik = Auth::guard('karyawan')->user()->nik;
-        $tgl_izin = $request->tgl_izin;
+        $tgl_izin_dari = $request->tgl_izin_dari;
+        $tgl_izin_sampai = $request->tgl_izin_sampai;
         $status = $request->status;
         $keterangan = $request->keterangan;
 
         $data = [
             'nik' => $nik,
-            'tgl_izin' => $tgl_izin,
+            'tgl_izin_dari' => $tgl_izin_dari,
+            'tgl_izin_sampai' => $tgl_izin_sampai,
             'status' => $status,
             'keterangan' => $keterangan,
         ];
@@ -252,10 +254,10 @@ class PresensiController extends Controller
 
     public function izinsakit(Request $request){
         $query = Pengajuanizin::query();
-        $query->select('id','tgl_izin','pengajuan_izin.nik','nama','jabatan','status','status_approved','keterangan');
+        $query->select('id','tgl_izin_dari', 'tgl_izin_sampai', 'pengajuan_izin.nik','nama','jabatan','status','status_approved','keterangan');
         $query->join('karyawan','pengajuan_izin.nik','=','karyawan.nik');
         if(!empty($request->dari) && !empty($request->sampai)){
-            $query->whereBetween('tgl_izin',[$request->dari,$request->sampai]);
+            $query->whereBetween('tgl_izin_Dari',[$request->dari,$request->sampai]);
         }
 
         if(!empty($request->nik)){
@@ -269,7 +271,7 @@ class PresensiController extends Controller
         if($request->status_approved === '0' || $request->status_approved === '1' || $request->status_approved === '2'){
             $query->where('status_approved',$request->status_approved);
         }
-        $query->orderBy('tgl_izin','desc');
+        $query->orderBy('tgl_izin_dari','desc');
         $izinsakit = $query->paginate(5);
         $izinsakit->appends($request->all());
         return view('presensi.izinsakit', compact('izinsakit'));
