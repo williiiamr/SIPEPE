@@ -42,6 +42,6 @@ function formatDate(date) {
 setInterval(() => {
     const now = new Date();
 
-    timeElement.textContent = formatTime(now);
-    dateElement.textContent = formatDate(now);
+    // timeElement.textContent = formatTime(now);
+    // dateElement.textContent = formatDate(now);
 }, 200);
