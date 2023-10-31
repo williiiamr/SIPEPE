@@ -31,7 +31,7 @@
         </header>
 @endsection
 @section('content')
-<div class="row" style="margin-top:70px">
+<div class="row" style="margin-top:15px">
     <div class="col">
         @php
         $messagesucces = Session::get('success');
@@ -49,31 +49,29 @@
         @endif
     </div>
 </div>
-<div class="row">
-    <div class="col">
-        @foreach ($dataizin as $d)
-        <ul class="listview image-listview">
-            <li>
-                <div class="item">
-                    <div class="in">
-                        <div>
-                            <b>{{ date("d-m-Y", strtotime($d->tgl_izin)) }} ({{ $d->status == "s" ? "Sakit" : "Izin" }})</b><br>
-                            <small class="text-muted">{{ $d->keterangan }}</small>
-                        </div>
-                        @if ($d->status_approved == 0)
-                        <span class="badge bg-warning">Menunggu</span>
+
+@foreach ($dataizin as $d)
+<div class="container-fluid content-izin mt-2" style="border-radius: 10px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
+    <div class="d-flex justify-content-between align-items-center">
+        <div style="margin-top: 10px;">
+            <b style="margin-left: 10px;">{{ date("d-m-Y", strtotime($d->tgl_izin)) }} ({{ $d->status == "s" ? "Sakit" : "Izin" }})</b>
+            <div>
+                <p class="text-muted" style="margin-left: 10px;">{{ $d->keterangan }}</p>
+            </div>
+        </div>
+        <div style="margin-right: 10px;">
+        @if ($d->status_approved == 0)
+                        <span  class="badge bg-warning">Menunggu</span>
                         @elseif ($d->status_approved == 1)
                         <span class="badge bg-success">Disetujui</span>
                         @elseif ($d->status_approved == 2)
                         <span class="badge bg-danger">Ditolak</span>
                         @endif
-                    </div>
-                </div>
-            </li>
-        </ul>
-        @endforeach
+        </div>
     </div>
 </div>
+@endforeach
+
 <div class="fab-button bottom-right" >
     <a href="/presensi/buatizin">
         <ion-icon name="add-outline"></ion-icon>

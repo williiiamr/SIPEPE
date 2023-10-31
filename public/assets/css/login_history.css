@@ -516,6 +516,7 @@ a.badge-danger {
 .ul-history {
     width: 98%;
     margin: auto;
+    background-color: black;
 }
 .date-history {
     border-bottom: 1px solid;
@@ -592,4 +593,22 @@ li:nth-child(n + 2) {
         font-size: 18px;
         margin: auto;
     }
+}
+
+/*Izin-Informasi*/
+.date-izin {
+    margin-top: 100px;
+}
+
+.text-keterangan {
+    min-width: 10%;
+}
+
+.content-izin {
+    max-width: 98%;
+    word-wrap: break-all;
+}
+
+.container-fluid p {
+    word-break: break-all; /* Memecah kata-kata yang melebihi batas container */
 }
