@@ -7,8 +7,28 @@
 </head>
 <body>
     <div>
-        <p>Bandar Lampung, </p>
+        <p>Bandar Lampung, {{ $date }}</p>
     </div>
-    <h1>Hello World</h1>
+    <div>
+        <p>Perihal : 
+        @if ($pengajuanizin->status === 'i')
+            Izin
+        @elseif ($pengajuanizin->status === 's')
+            Sakit
+        @else
+            {{ $pengajuanizin->status }}
+        @endif
+        </p>
+    </div>
+    <br>
+    <div>
+        <p>Nama : {{ $nama }}</p>
+    </div>
+    <div>
+        <p>NIK : {{ $nik }}</p>
+    </div>
+    <div>
+        <p>Jabatan : {{ $jabatan }}</p>
+    </div>
 </body>
 </html>

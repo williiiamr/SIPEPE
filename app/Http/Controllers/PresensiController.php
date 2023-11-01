@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
 
-use Barryvdh\DomPDF\Facade as PDF;
-use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use PDF;
+
+// use Barryvdh\DomPDF\Facade as PDF;
+// use Barryvdh\DomPDF\PDF as DomPDFPDF;
 
 class PresensiController extends Controller
 {
@@ -323,12 +326,32 @@ class PresensiController extends Controller
         return $cek;
     }
 
-    public function suratcuti()
+    public function suratcuti($id)
     {
-        $data = Pengajuanizin::all();
-        $pdf = DomPDFPDF::loadView('presensi.suratcuti',compact('data'));
-        $pdf->setPaper('A4','potrait');
-        return $pdf->download('suratcuti.pdf');
+        // Ambil data Pengajuanizin berdasarkan ID
+        $pengajuanizin = Pengajuanizin::find($id);
+
+        if ($pengajuanizin) {
+            $date = Carbon::parse(date('Y-m-d'))->format('j F Y');
+
+            $nama = Auth::guard('karyawan')->user()->nama;
+            $nik = Auth::guard('karyawan')->user()->nik;
+            $jabatan = Auth::guard('karyawan')->user()->jabatan;
+
+            $data = [
+                'date' => $date,
+                'pengajuanizin' => $pengajuanizin,
+                'nama' => $nama,
+                'nik' => $nik,
+                'jabatan' => $jabatan
+            ];
+
+            $pdf = PDF::loadView('presensi.suratcuti', $data);
+            $pdf->setPaper('A4', 'portrait');
+            return $pdf->download('suratcuti.pdf');
+        } else {
+            return "Izin tidak ditemukan."; // Tampilkan pesan jika izin tidak ditemukan
+        }
     }
 
 }
