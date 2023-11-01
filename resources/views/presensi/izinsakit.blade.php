@@ -195,6 +195,9 @@
                                     <option value="2">Ditolak</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <textarea name="alasan" id="alasan" cols="30" rows="10" class="form-control" placeholder="Alasan"></textarea>
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-3">

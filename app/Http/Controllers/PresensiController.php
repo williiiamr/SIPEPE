@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
-use PDF;
+use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
 
 class PresensiController extends Controller
 {
@@ -30,8 +31,9 @@ class PresensiController extends Controller
         //-6.224833003263079, 106.6498009576709
         // -6.397327086594367, 106.83687347311667
         //-6.397319890760971, 106.83686828415709
-        $latitudekantor = -6.397319890760971; 
-        $longitudekantor = 106.83686828415709;
+        // -5.401331034301522, 105.27755498418226
+        $latitudekantor = -5.401331034301522; 
+        $longitudekantor =  105.27755498418226;
         $location = explode(',', $lokasi);
         $latitude = $location[0];
         $longitude = $location[1];
@@ -58,6 +60,9 @@ class PresensiController extends Controller
             echo "Radius_Error|Anda Berada di Luar Radius";
         }else{
             if ($cek > 0){
+                if($jam < "17:00"){
+                    echo "Error|Belum Jam Pulang";
+                }else{
                 $data_pulang = [
                     'jam_out' => $jam,
                     'foto_out' => $fileName,
@@ -70,6 +75,7 @@ class PresensiController extends Controller
                 }else{
                     echo "Error|Gagal absen";
                 }
+            }
             }else{
             $data = [
                 'nik' => $nik,
@@ -218,8 +224,14 @@ class PresensiController extends Controller
 
     public function izin()
     {
+        $bulanini = date('m') * 1;
+        $tahunini = date('Y');
         $nik = Auth::guard('karyawan')->user()->nik;
-        $dataizin = DB::table('pengajuan_izin')->where('nik',$nik)->get();
+        $dataizin = DB::table('pengajuan_izin')
+            ->where('nik',$nik)
+            ->whereRaw('MONTH(tgl_izin)="' . $bulanini . '"')
+            ->whereRaw('YEAR(tgl_izin)="' . $tahunini . '"')
+            ->get();
         return view('presensi.izin', compact('dataizin'));
     }
 
@@ -280,8 +292,10 @@ class PresensiController extends Controller
     public function approveizinsakit(Request $request){
         $status_approved = $request->status_approved;
         $id_izinsakit_form = $request->id_izinsakit_form;
+        $alasan = $request->alasan;
         $update = DB::table('pengajuan_izin')->where('id', $id_izinsakit_form)->update([
-            'status_approved' => $status_approved
+            'status_approved' => $status_approved,
+            'alasan' => $alasan
         ]);
         if($update){
             return Redirect::back()->with(['succes' => 'Data Berhasil Di Update']);
@@ -312,7 +326,7 @@ class PresensiController extends Controller
     public function suratcuti()
     {
         $data = Pengajuanizin::all();
-        $pdf = PDF::loadView('presensi.suratcuti',compact('data'));
+        $pdf = DomPDFPDF::loadView('presensi.suratcuti',compact('data'));
         $pdf->setPaper('A4','potrait');
         return $pdf->download('suratcuti.pdf');
     }

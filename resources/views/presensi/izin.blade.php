@@ -58,6 +58,9 @@
             <div>
                 <p class="text-muted" style="margin-left: 10px;">{{ $d->keterangan }}</p>
             </div>
+            <div>
+                <p class="text-muted" style="margin-left: 10px;">{{ $d->alasan }}</p>
+            </div>
         </div>
         <div style="margin-right: 10px;">
             @if ($d->status_approved == 0)
@@ -71,6 +74,7 @@
                 <button class="btn btn-success">Unduh Surat</button>
             </a>
         </div>
+       
     </div>
 </div>
 @endforeach

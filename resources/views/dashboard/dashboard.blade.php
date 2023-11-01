@@ -40,13 +40,13 @@
     </div>
   </div>
   <div class="mt-4 w-100 status-container d-flex justify-content-between gx-0">
-    <div class="status bg-danger rounded-4 d-flex flex-column justify-content-center shadow">
+    <div class="status {{ $presensihariini->jam_in != null ? 'bg-success' : 'bg-danger' }} rounded-4 d-flex flex-column justify-content-center shadow">
       <div class="small-font fw-bolder ms-3 text-white">Absen Masuk</div>
-      <div class="medium-font fw-bolder ms-3 text-white"><span>{{ $presensihariini != null ? $presensihariini->jam_in : 'Anda Belum Absen' }}</span></div>
+      <div class="medium-font fw-bolder ms-3 text-white"><span>{{ $presensihariini->jam_in != null ? $presensihariini->jam_in : 'Anda Belum Absen' }}</span></div>
     </div>
-    <div class="status bg-danger rounded-4 d-flex flex-column justify-content-center shadow">
+    <div class="status {{ $presensihariini->jam_out != null ? 'bg-success' : 'bg-danger' }} rounded-4 d-flex flex-column justify-content-center shadow">
       <div class="small-font fw-bolder ms-3 text-white">Absen Pulang</div>
-      <div class="medium-font fw-bolder ms-3 text-white">{{ $presensihariini != null ? $presensihariini->jam_out : 'Anda Belum Absen' }}</div>
+      <div class="medium-font fw-bolder ms-3 text-white">{{ $presensihariini->jam_out != null ? $presensihariini->jam_out : 'Anda Belum Absen' }}</div>
     </div>
   </div>
   <div class="small-font fw-bolder my-4">
@@ -58,7 +58,7 @@
         <img width="30" height="30" src="{{ asset("assets/img/mingcute_exit-door-line.png") }}" alt="" />
         <div class="ms-2 d-flex flex-column justify-content-center align-items-start">
           <div class="fs-6 fw-bold">Hadir</div>
-          <div class="test fw-bold days">{{ $rekap->jmlhadir }} Hari</div>
+          <div class="test fw-bold days">{{ $rekap->jmlhadir != null ? $rekap->jmlhadir : "0" }} Hari</div>
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@
         <img width="30" height="30" src="{{ asset("assets/img/iconamoon_profile-fill.png") }}" alt="" />
         <div class="ms-2 d-flex flex-column justify-content-center align-items-start">
           <div class="fs-6 fw-bold">Izin</div>
-          <div class="test fw-bold days">{{ $rekapizin->jmlizin }} Hari</div>
+          <div class="test fw-bold days">{{ $rekapizin->jmlizin != null ? $rekapizin->jmlizin : "0" }} Hari</div>
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@
         <img width="30" height="30" src="{{ asset("assets/img/clarity_sad-face-solid.png") }}" alt="" />
         <div class="ms-2 d-flex flex-column justify-content-center align-items-start">
           <div class="fs-6 fw-bold">Sakit</div>
-          <div class="test fw-bold days">{{ $rekapizin->jmlsakit }} Hari</div>
+          <div class="test fw-bold days">{{ $rekapizin->jmlsakit != null ? $rekapizin->jmlsakit : "0" }} Hari</div>
         </div>
       </div>
     </div>
@@ -85,7 +85,7 @@
         <img width="30" height="30" src="{{ asset("assets/img/mdi_clock-outline.png") }}" alt="" />
         <div class="ms-2 d-flex flex-column justify-content-center align-items-start">
           <div class="fs-6 fw-bold">Terlambat</div>
-          <div class="test fw-bold days">{{ $rekap->jmlterlambat }} Hari</div>
+          <div class="test fw-bold days">{{ $rekap->jmlterlambat != null ? $rekap->jmlterlambat : "0" }} Hari</div>
         </div>
       </div>
     </div>
