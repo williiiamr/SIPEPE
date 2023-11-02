@@ -1,0 +1,32 @@
+.form-cont {
+    width: 90%;
+    height: 450px;
+    margin: 40px auto 0;
+}
+
+.tanggal {
+    width: 100px;
+}
+
+textarea {
+    resize: none !important;
+    height: 150px !important;
+    overflow-y: scroll;
+}
+
+button {
+    width: 75px;
+    height: 40px;
+    border: none;
+    color: white;
+    background-color: #5236ff;
+}
+
+.date-logo {
+    top: 45px;
+    left: 175px;
+}
+
+.sub-form {
+    color: #9663fe;
+}
