@@ -10,13 +10,8 @@
           <img width="25" height="25" src="../../assets/img/presensi.png" alt="" />
           <div class="menu-text">Presensi</div>
         </a>
-<<<<<<< Updated upstream
-        <a href="/presensi/izin" class="d-flex flex-column justify-content-center align-items-center menu">
-          <img width="25" height="25" src="../../assets/img/cuti.png" alt="" />
-=======
         <a href="/presensi/izin" class="d-flex flex-column justify-content-center align-items-center menu {{ request()->is('presensi/izin') || request()->is('presensi/buatizin') ? 'selected' : '' }}">
         <img width="25" height="25" src="../../assets/img/cuti.png" alt="" />
->>>>>>> Stashed changes
           <div class="menu-text">Cuti</div>
         </a>
         <a href="/history" class="d-flex flex-column justify-content-center align-items-center menu {{ request()->is('history') ? 'selected' : '' }}">
