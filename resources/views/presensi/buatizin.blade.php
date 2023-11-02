@@ -5,8 +5,10 @@
     <title>Formulir Cuti Karyawan</title>
     <link rel="icon" href="logo.png" type="image/x-icon" />
     <link rel="stylesheet" href= {{ asset("assets/css/login_history.css") }} />
+    <link rel="stylesheet" href= {{ asset("assets/css/form-cuti.css") }} />
     <!-- Include Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     <!-- Include Bootstrap Datepicker CSS and JS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
@@ -32,29 +34,38 @@
         </header>
 @endsection
 @section('content')
-<div class="row" style="margin-top:70px">
-    <div class="col">
-        <form method="POST" action="/presensi/storeizin" id="frmIzin">
-            @csrf
+<div class="form-cont bg-white rounded-2 shadow p-4 overflow-hidden">
+      <p class="fw-bold sub-form">Form Pengajuan Cuti</p>
+      <form method="POST" action="/presensi/storeizin" id="frmIzin">
+        @csrf
+        <div class="row g-3">
+          <div class="col-md-3 col-5 position-relative">
+            <label for="tgl_izin" class="form-label">Tanggal</label>
+            <input type="text" id="tgl_izin" name="tgl_izin" class="form-control form-control-sm datepicker" placeholder="Tanggal">
+            <!-- <input type="date" id="tgl_izin" name="tgl_izin" class="form-control form-control-sm" /> -->
+          </div>
+          <div class="col-md-3 col-5 ms-2">
             <div class="form-group">
-                <input type="text" id="tgl_izin" name="tgl_izin" class="form-control datepicker" placeholder="Tanggal">
+              <label for="status" class="form-label ms-1">Keterangan</label>
+              <select name="status" id="status" class="form-select form-select-sm select-style">
+                <option value="">Izin / Sakit</option>
+                <option value="i">Izin</option>
+                <option value="s">Sakit</option>
+              </select>
             </div>
-            <div class="form-group">
-                <select name="status" id="status" class="form-control">
-                    <option value="">Izin / Sakit</option>
-                    <option value="i">Izin</option>
-                    <option value="s">Sakit</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <textarea name="keterangan" id="keterangan" cols="30" rows="10" class="form-control"></textarea>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary w-100">Kirim</button>
-            </div>
-        </form>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <label for="keterangan">Alasan</label>
+            <textarea name="keterangan" id="keterangan" class="form-control" placeholder="Alasan..."></textarea>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end mt-5">
+          <button class="rounded-2" type="submit">Simpan</button>
+        </div>
+      </form>
     </div>
-</div>
 @endsection
 @push('myscript')
 <script>
