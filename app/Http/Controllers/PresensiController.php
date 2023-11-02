@@ -36,8 +36,8 @@ class PresensiController extends Controller
         //-6.397319890760971, 106.83686828415709
         // -5.401331034301522, 105.27755498418226 rumah default
         // -5.396866794639903, 105.27792672028814 gg saleh
-        $latitudekantor = -5.396866794639903; 
-        $longitudekantor =  105.27792672028814;
+        $latitudekantor = -5.401331034301522; 
+        $longitudekantor =  105.27755498418226;
         $location = explode(',', $lokasi);
         $latitude = $location[0];
         $longitude = $location[1];
@@ -287,7 +287,7 @@ class PresensiController extends Controller
         if($request->status_approved === '0' || $request->status_approved === '1' || $request->status_approved === '2'){
             $query->where('status_approved',$request->status_approved);
         }
-        $query->orderBy('tgl_izin','desc');
+        $query->orderBy('tgl_izin','asc');
         $izinsakit = $query->paginate(5);
         $izinsakit->appends($request->all());
         return view('presensi.izinsakit', compact('izinsakit'));
@@ -310,7 +310,8 @@ class PresensiController extends Controller
 
     public function batalkanizinsakit($id){
         $update = DB::table('pengajuan_izin')->where('id', $id)->update([
-            'status_approved' => 0
+            'status_approved' => 0,
+            'alasan' => " "
         ]);
         if($update){
             return Redirect::back()->with(['succes' => 'Data Berhasil Di Update']);

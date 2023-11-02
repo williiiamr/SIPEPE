@@ -30,3 +30,7 @@ button {
 .sub-form {
     color: #9663fe;
 }
+
+.datepicker-modal{
+    max-height: 330px !important;
+}
