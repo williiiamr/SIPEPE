@@ -32,11 +32,7 @@
         </header>
 @endsection
 @section('content')
-<<<<<<< Updated upstream
-<div class="row" style="margin-top:15px">
-=======
 <div class="row">
->>>>>>> Stashed changes
     <div class="col">
         @php
         $messagesucces = Session::get('success');
@@ -81,18 +77,10 @@
         </div>
     </div>
 </div>
-<<<<<<< Updated upstream
 @endforeach
-
-<div class="fab-button bottom-right" >
-    <a href="/presensi/buatizin">
-        <ion-icon name="add-outline"></ion-icon>
-        ADD
-=======
 <div class="container mx-0 gx-0 pos-relative">
     <a href="/presensi/buatizin" class="position-absolute bg-primary add d-flex justify-content-center align-items-center rounded-5">
         +
->>>>>>> Stashed changes
     </a>
 </div>
 @endsection
