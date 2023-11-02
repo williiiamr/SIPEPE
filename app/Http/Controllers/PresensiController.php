@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
-
-use Barryvdh\DomPDF\Facade as PDF;
-use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use PDF;
 
 class PresensiController extends Controller
 {
@@ -31,9 +29,10 @@ class PresensiController extends Controller
         //-6.224833003263079, 106.6498009576709
         // -6.397327086594367, 106.83687347311667
         //-6.397319890760971, 106.83686828415709
-        // -5.401331034301522, 105.27755498418226
-        $latitudekantor = -5.401331034301522; 
-        $longitudekantor =  105.27755498418226;
+        // -5.401331034301522, 105.27755498418226 rumah default
+        // -5.396866794639903, 105.27792672028814 gg saleh
+        $latitudekantor = -5.396866794639903; 
+        $longitudekantor =  105.27792672028814;
         $location = explode(',', $lokasi);
         $latitude = $location[0];
         $longitude = $location[1];
@@ -60,7 +59,7 @@ class PresensiController extends Controller
             echo "Radius_Error|Anda Berada di Luar Radius";
         }else{
             if ($cek > 0){
-                if($jam < "17:00"){
+                if($jam < "10:00"){
                     echo "Error|Belum Jam Pulang";
                 }else{
                 $data_pulang = [
@@ -326,7 +325,7 @@ class PresensiController extends Controller
     public function suratcuti()
     {
         $data = Pengajuanizin::all();
-        $pdf = DomPDFPDF::loadView('presensi.suratcuti',compact('data'));
+        $pdf = PDF::loadView('presensi.suratcuti',compact('data'));
         $pdf->setPaper('A4','potrait');
         return $pdf->download('suratcuti.pdf');
     }

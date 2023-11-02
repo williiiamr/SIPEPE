@@ -40,13 +40,13 @@
     </div>
   </div>
   <div class="mt-4 w-100 status-container d-flex justify-content-between gx-0">
-    <div class="status {{ $presensihariini->jam_in != null ? 'bg-success' : 'bg-danger' }} rounded-4 d-flex flex-column justify-content-center shadow">
+    <div class="status {{ $presensihariini == null ? 'bg-danger' : 'bg-success' }} rounded-4 d-flex flex-column justify-content-center shadow">
       <div class="small-font fw-bolder ms-3 text-white">Absen Masuk</div>
-      <div class="medium-font fw-bolder ms-3 text-white"><span>{{ $presensihariini->jam_in != null ? $presensihariini->jam_in : 'Anda Belum Absen' }}</span></div>
+      <div class="medium-font fw-bolder ms-3 text-white"><span>{{ $presensihariini!= null ? $presensihariini->jam_in : 'Anda Belum Absen' }}</span></div>
     </div>
-    <div class="status {{ $presensihariini->jam_out != null ? 'bg-success' : 'bg-danger' }} rounded-4 d-flex flex-column justify-content-center shadow">
+    <div class="status {{ $cek == null ? 'bg-danger' : 'bg-success' }} rounded-4 d-flex flex-column justify-content-center shadow">
       <div class="small-font fw-bolder ms-3 text-white">Absen Pulang</div>
-      <div class="medium-font fw-bolder ms-3 text-white">{{ $presensihariini->jam_out != null ? $presensihariini->jam_out : 'Anda Belum Absen' }}</div>
+      <div class="medium-font fw-bolder ms-3 text-white">{{ $presensihariini!= null ? $presensihariini->jam_out : 'Anda Belum Absen' }}</div>
     </div>
   </div>
   <div class="small-font fw-bolder my-4">

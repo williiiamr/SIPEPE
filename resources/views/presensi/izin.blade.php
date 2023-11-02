@@ -74,7 +74,6 @@
             <span class="badge bg-danger">Ditolak</span>
             @endif
         </div>
-       
     </div>
 </div>
 @endforeach
