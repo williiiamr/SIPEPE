@@ -10,11 +10,11 @@
     background-position: 650px -1px;
     overflow-y: hidden;
 }
-
+/* 
 .form-control {
     height: 50px;
     width: -20px;
-}
+} */
 .container-judul {
     height: 30px;
     width: 1000px;
@@ -90,10 +90,10 @@ a {
         background-color: #ffffff;
         position: absolute;
     }
-    .form-control {
+    /* .form-control {
         height: 50px;
         width: -20px;
-    }
+    } */
     .container-judul {
         height: 20px;
         margin-left: -80px;
