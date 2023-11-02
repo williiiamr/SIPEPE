@@ -185,12 +185,11 @@
             <a class="nav-link" href="/presensi/izinsakit" >
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-cctv" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-license" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M3 3m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z"></path>
-                    <path d="M12 14m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-                    <path d="M19 7v7a7 7 0 0 1 -14 0v-7"></path>
-                    <path d="M12 14l.01 0"></path>
+                    <path d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11"></path>
+                    <path d="M9 7l4 0"></path>
+                    <path d="M9 11l4 0"></path>
                  </svg>
                 </span>
                 <span class="nav-link-title">

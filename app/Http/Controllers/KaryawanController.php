@@ -21,7 +21,6 @@ class KaryawanController extends Controller
         $jabatan = $request->jabatan;
         $no_hp = $request->no_telp;
         $password = Hash::make($request->password);
-        $karyawan = DB::table('karyawan')->where('nik', $nik)->first();
         $foto = $nik . "." . $request->file('foto')->getClientOriginalExtension(); 
         try{
             $data = [
