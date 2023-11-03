@@ -605,6 +605,7 @@ li:nth-child(n + 2) {
 
 .content-izin1 {
     max-width: 80%;
+    word-wrap: break-all;
 }
 
 .btn-unduh {
