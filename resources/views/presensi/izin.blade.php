@@ -67,6 +67,13 @@
             <span  class="d-flex flex-row-reverse">
                 <p class="ket bg-warning">Menunggu</p>
             </span>
+
+            <form method="POST" action="{{ route('izin.delete', ['id' => $d->id]) }}" onsubmit="return confirm('Are you sure you want to delete this record?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            
             @elseif ($d->status_approved == 1)
             <span class="d-flex flex-row-reverse">
                 <p class="ket bg-success">Disetujui</p>
@@ -77,12 +84,6 @@
                     <button class="btn btn-primary btn-unduh">Unduh Surat</button>
                 </a>
             </div>
-
-            <form method="POST" action="{{ route('izin.delete', ['id' => $d->id]) }}" onsubmit="return confirm('Are you sure you want to delete this record?')">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
 
             @elseif ($d->status_approved == 2)
             <span class="d-flex flex-row-reverse">

@@ -77,6 +77,7 @@ Route::middleware(['auth:user'])->group(function (){
     Route::get('/presensi/izinsakit', [PresensiController::class, 'izinsakit']);
     Route::post('/presensi/approveizinsakit', [PresensiController::class, 'approveizinsakit']);
     Route::get('/presensi/{id}/batalkanizinsakit', [PresensiController::class, 'batalkanizinsakit']);
+    Route::delete('/izin/{id}/delete', [PresensiController::class, 'delete'])->name('izin.delete');
 
     Route::get('/settings', [KaryawanController::class, 'setting']);
     Route::post('/settings/update', [KaryawanController::class, 'updateSetting']);
