@@ -71,7 +71,7 @@
             <form method="POST" action="{{ route('izin.delete', ['id' => $d->id]) }}" onsubmit="return confirm('Are you sure you want to delete this record?')">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger btn-unduh">Delete</button>
             </form>
             
             @elseif ($d->status_approved == 1)
