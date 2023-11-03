@@ -97,7 +97,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/karyawan/store" method='POST' id='formkaryawan'>
+                <form action="/karyawan/store" method='POST' id='formkaryawan' enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-12">
@@ -129,8 +129,22 @@
                                 </span>
                                 <input type="text" class="form-control" placeholder="Jabatan" name='jabatan' id='jabatan'>
                             </div>
+                            <div class="input-icon mb-3">
+                                <span class="input-icon-addon">
+                                  <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><circle cx="12" cy="7" r="4"></circle><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path></svg>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Password" name='password' id='password'>
+                            </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-label">Input foto</div>
+                            <input type="file" class="form-control" name="foto" id="foto">
+                        </div>
+                    </div>
+                    <br>
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
@@ -165,16 +179,43 @@
                 $('#input-karyawan').modal('show');
             });
 
-            $('#formkaryawan').submit(function(){
+            $('#formkaryawan').submit(function(event){
                 var nik = $('#nik').val();
                 var nama = $('#nama').val();
                 var no_telp = $('#no_telp').val();
                 var jabatan = $('#jabatan').val();
-                if(nik==''){
+                var foto = $('#foto').val();
+
+                if(nik == ''){
                     alert('nik harus diisi');
                     $('#nik').focus();
+                    event.preventDefault(); // Prevent the form submission
+                    window.location.href = window.location.href; // Redirect back to the same page
                 }
-
+                else if(nama == ''){
+                    alert('nama harus diisi');
+                    $('#nama').focus();
+                    event.preventDefault();
+                    window.location.href = window.location.href;
+                }
+                else if(no_telp == ''){
+                    alert('no_telp harus diisi');
+                    $('#no_telp').focus();
+                    event.preventDefault();
+                    window.location.href = window.location.href;
+                }
+                else if(jabatan == ''){
+                    alert('jabatan harus diisi');
+                    $('#jabatan').focus();
+                    event.preventDefault();
+                    window.location.href = window.location.href;
+                }
+                else if(foto == ''){
+                    alert('foto harus diisi');
+                    $('#foto').focus();
+                    event.preventDefault();
+                    window.location.href = window.location.href;
+                }
             });
 
             $(".delete-confirm").click(function(){

@@ -43,7 +43,7 @@
 
 <!-- Set "A5", "A4" or "A3" for class name -->
 <!-- Set also "landscape" if you need -->
-<body class="A4 landscape">
+<body class="A3 landscape">
 
   <!-- Each sheet element should have the class "sheet" -->
   <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
@@ -64,40 +64,43 @@
       </tr>
     </table>
     <table class="tablepresensi">
-      <tr>
-        <th rowspan="2">Nik</th>
-        <th rowspan="2">Nama Karyawan</th>
-        <th colspan="31">tgl</th>
-      </tr>
-      <tr>
-        @for ($i = 1; $i <= 31; $i++)
-            <th>{{ $i }}</th>
-        @endfor
-      </tr>
-     @foreach ($presensi as $d)
-         <tr>
-            <td>
-              {{ $d->nik }}
-            </td>
+      <thead>
+        <tr>
+          <th>Nik</th>
+          <th>Nama Karyawan</th>
+          @for ($day = 1; $day <= 31; $day++)
+            <th>{{ $day }}</th>
+          @endfor
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($presensi as $data)
+        <tr>
+          <td>{{ $data->nik }}</td>
+          <td>{{ $data->nama }}</td>
+          <!-- Add day data here -->
+          @for ($day = 1; $day <= 31; $day++)
+              <td>
+                @if ($data->attendedOnDay($tahun, $bulan, $day, $data->nik))
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                  </svg>
+                        
+                @elseif ($izin->permittedOnDay($tahun, $bulan, $day, $data->nik))
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="red" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                  </svg>
 
-            <td>
-              {{ $d->nama }}
-            </td>
-
-            <?php
-              for ($i=1; $i <= 31; $i++) { 
-                $tgl = 'tgl_' . $i;
-            ?>
-              <td> <?php if ($d->$tgl != null){ ?> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M5 12l5 5l10 -10"></path>
-             </svg> <?php } ?></td>
-            <?php
-              }
-            ?>
-
-         </tr>
-     @endforeach
+                @else
+                    <!-- Empty box symbol -->
+                @endif
+              </td>
+          @endfor
+        </tr>
+        @endforeach
+      </tbody>
     </table>
 
   </section>

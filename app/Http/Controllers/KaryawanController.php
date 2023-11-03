@@ -20,23 +20,28 @@ class KaryawanController extends Controller
         $nama = $request->nama;
         $jabatan = $request->jabatan;
         $no_hp = $request->no_telp;
-        $password = Hash::make('123');
+        $password = Hash::make($request->password);
+        $foto = $nik . "." . $request->file('foto')->getClientOriginalExtension(); 
         try{
             $data = [
                 'nik' => $nik,
                 'nama' => $nama,
                 'jabatan' => $jabatan,
                 'no_hp' => $no_hp,
-                'password' => $password
+                'password' => $password,
+                'foto' => $foto
             ];
             $simpan = DB::table('karyawan')->insert($data);
             if($simpan){
+                if($request->hasFile('foto')){
+                    $folderPath = 'public/uploads/karyawan/';
+                    $request->file('foto')->storeAs($folderPath, $foto);
+                }
                 return Redirect::back()->with(['success' => 'Data Berhasil Disimpan']);
             }
         } catch (\Exception $e){
             dd($e);
         }
-        
     }
 
     public function edit(Request $request){
@@ -49,21 +54,37 @@ class KaryawanController extends Controller
         $nama = $request->nama;
         $jabatan = $request->jabatan;
         $no_hp = $request->no_telp;
-        $password = Hash::make('123');
-        try{
-            $data = [
-                'nama' => $nama,
-                'jabatan' => $jabatan,
-                'no_hp' => $no_hp,
-                'password' => $password
-            ];
-            $update = DB::table('karyawan')->where('nik', $nik)->update($data);
-            if($update){
-                return Redirect::back()->with(['success' => 'Data Berhasil Disimpan']);
-            }
-        } catch (\Exception $e){
-            dd($e);
+        $karyawan = DB::table('karyawan')->where('nik', $nik)->first();
+
+        if ($request->hasFile('foto')) {
+            $foto = $nik . "." . $request->file('foto')->getClientOriginalExtension();
+        } else {
+            $foto = $karyawan->foto;
         }
+
+        $data = [
+            'nama' => $nama,
+            'jabatan' => $jabatan,
+            'no_hp' => $no_hp,
+            'foto' => $foto
+        ];
+
+        if (!empty($request->password)) {
+            $data['password'] = Hash::make($request->password);
+        }
+
+        $update = DB::table('karyawan')->where('nik', $nik)->update($data);
+
+        if ($update) {
+            if ($request->hasFile('foto')) {
+                $folderPath = 'public/uploads/karyawan/';
+                $request->file('foto')->storeAs($folderPath, $foto);
+            }
+            return Redirect::back()->with(['success' => 'Data berhasil diupdate']);
+        } else {
+            return Redirect::back()->with(['error' => 'Data gagal diupdate']);
+        }
+
     }
 
     public function delete($nik){
