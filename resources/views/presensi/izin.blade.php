@@ -112,7 +112,7 @@
 @endforeach
 <div class="container mx-0 gx-0 pos-relative">
     <a href="/presensi/buatizin" class="position-absolute bg-primary add d-flex justify-content-center align-items-center rounded-5">
-        
+        +
     </a>
 </div>
 @endsection
