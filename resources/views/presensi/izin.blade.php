@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
      <!-- Include Moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
@@ -54,20 +56,20 @@
 @foreach ($dataizin as $d)
 <div class="container-fluid content-izin mt-2" style="border-radius: 10px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
     <div class="d-flex justify-content-between align-items-center">
-        <div style="margin-top: 10px;">
-            <b style="margin-left: 10px;">{{ date("d-m-Y", strtotime($d->tgl_izin)) }} ({{ $d->status == "s" ? "Sakit" : "Izin" }})</b>
-            <div>
-                <p class="text-muted font-size1" style="margin-left: 10px;">{{ $d->keterangan }}</p>
-            </div>
-            <div class="container-fluid" style="margin-left: 10px;">
-                <p class="rectangle-alasan">{{ $d->alasan }}</p>
-            </div>
-        </div>
-        <div class="position-relative margin1">
+    <div class="d-flex flex-column content-izin1 mb-3 mt-3">
+  <div class="p-2"><b>{{ date("d-m-Y", strtotime($d->tgl_izin)) }} ({{ $d->status == "s" ? "Sakit" : "Izin" }})</b>
+  <p class="text-muted font-size1">{{ $d->keterangan }} </p></div>
+</div>
+
+        <div class="position-relative mb-3 mt-3">
             @if ($d->status_approved == 0)
-            <span  class="badge bg-warning">Menunggu</span>
+            <span  class="d-flex flex-row-reverse">
+                <p class="ket bg-warning">Menunggu</p>
+            </span>
             @elseif ($d->status_approved == 1)
-            <span class="badge bg-success">Disetujui</span>
+            <span class="d-flex flex-row-reverse">
+                <p class="ket bg-success">Disetujui</p>
+            </span>
             <div>
             <a href="/presensi/{{ $d->id }}/suratcuti" target="_blank">
                 <button class="btn btn-primary btn-unduh">Unduh Surat</button>
@@ -75,7 +77,34 @@
             </div>
 
             @elseif ($d->status_approved == 2)
-            <span class="badge bg-danger">Ditolak</span>
+            <span class="d-flex flex-row-reverse">
+                <p class="ket bg-danger">Ditolak</p>
+            </span>
+            <div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-unduh" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Detail
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Cuti Anda ditolak!</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    {{ $d->alasan }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
             @endif
         </div>
     </div>
@@ -83,7 +112,7 @@
 @endforeach
 <div class="container mx-0 gx-0 pos-relative">
     <a href="/presensi/buatizin" class="position-absolute bg-primary add d-flex justify-content-center align-items-center rounded-5">
-        +
+        
     </a>
 </div>
 @endsection

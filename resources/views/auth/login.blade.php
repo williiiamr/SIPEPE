@@ -25,10 +25,10 @@
       <form action='/proseslogin' method="POST" class='login100-form validate-form'>
         @csrf
         <div class="mb-3">
-          <input type="text" class="form-control" id="nik" name='nik' aria-describedby="emailHelp" placeholder="NIK" />
+          <input type="text" class="form-control" style="height: 50px; width:-20px" id="nik" name='nik' aria-describedby="emailHelp" placeholder="NIK" />
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+          <input type="password" class="form-control" style="height: 50px; width:-20px" id="password" name="password" placeholder="Password" />
         </div>
         <div class="text-center"><button type="submit" class="btn btn-primary px-5 mb-5 w-100">LOGIN</button></div>
       </form>
