@@ -53,6 +53,7 @@ Route::middleware(['auth:karyawan'])->group(function (){
     Route::get('/presensi/buatizin', [PresensiController::class, 'buatizin']);
     Route::post('/presensi/storeizin', [PresensiController::class, 'storeizin']);
     Route::post('/presensi/cekpengajuanizin', [PresensiController::class, 'cekpengajuanizin']);
+    Route::delete('/izin/{id}/delete', [PresensiController::class, 'delete'])->name('izin.delete');
 
     // Bagian Surat Cuti
     Route::get('/presensi/{id}/suratcuti', [PresensiController::class, 'suratcuti']);

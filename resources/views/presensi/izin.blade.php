@@ -56,10 +56,11 @@
 @foreach ($dataizin as $d)
 <div class="container-fluid content-izin mt-2" style="border-radius: 10px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
     <div class="d-flex justify-content-between align-items-center">
-    <div class="d-flex flex-column content-izin1 mb-3 mt-3">
-  <div class="p-2"><b>{{ date("d-m-Y", strtotime($d->tgl_izin)) }} ({{ $d->status == "s" ? "Sakit" : "Izin" }})</b>
-  <p class="text-muted font-size1">{{ $d->keterangan }} </p></div>
-</div>
+        <div class="d-flex flex-column content-izin1 mb-3 mt-3">
+            <div class="p-2"><b>{{ date("d-m-Y", strtotime($d->tgl_izin)) }} ({{ $d->status == "s" ? "Sakit" : "Izin" }})</b>
+                <p class="text-muted font-size1">{{ $d->keterangan }} </p>
+            </div>
+        </div>
 
         <div class="position-relative mb-3 mt-3">
             @if ($d->status_approved == 0)
@@ -70,11 +71,18 @@
             <span class="d-flex flex-row-reverse">
                 <p class="ket bg-success">Disetujui</p>
             </span>
+            
             <div>
-            <a href="/presensi/{{ $d->id }}/suratcuti" target="_blank">
-                <button class="btn btn-primary btn-unduh">Unduh Surat</button>
-            </a>
+                <a href="/presensi/{{ $d->id }}/suratcuti" target="_blank">
+                    <button class="btn btn-primary btn-unduh">Unduh Surat</button>
+                </a>
             </div>
+
+            <form method="POST" action="{{ route('izin.delete', ['id' => $d->id]) }}" onsubmit="return confirm('Are you sure you want to delete this record?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
 
             @elseif ($d->status_approved == 2)
             <span class="d-flex flex-row-reverse">

@@ -327,4 +327,16 @@ class PresensiController extends Controller
         }
     }
 
+    public function delete($id)
+        {
+            $izin = Pengajuanizin::find($id);
+
+            if (!$izin) {
+                return redirect()->back()->with('error', 'Record not found.');
+            }
+
+            $izin->delete();
+
+            return redirect()->back()->with('success', 'Record deleted successfully.');
+        }
 }
