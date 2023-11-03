@@ -56,20 +56,23 @@
         <div style="margin-top: 10px;">
             <b style="margin-left: 10px;">{{ date("d-m-Y", strtotime($d->tgl_izin)) }} ({{ $d->status == "s" ? "Sakit" : "Izin" }})</b>
             <div>
-                <p class="text-muted" style="margin-left: 10px;">{{ $d->keterangan }}</p>
+                <p class="text-muted font-size1" style="margin-left: 10px;">{{ $d->keterangan }}</p>
             </div>
-            <div>
-                <p class="text-muted" style="margin-left: 10px;">{{ $d->alasan }}</p>
+            <div class="container-fluid" style="margin-left: 10px;">
+                <p class="rectangle-alasan">{{ $d->alasan }}</p>
             </div>
         </div>
-        <div style="margin-right: 10px;">
+        <div class="position-relative margin1">
             @if ($d->status_approved == 0)
             <span  class="badge bg-warning">Menunggu</span>
             @elseif ($d->status_approved == 1)
             <span class="badge bg-success">Disetujui</span>
+            <div>
             <a href="/presensi/{{ $d->id }}/suratcuti" target="_blank">
-                <button class="btn btn-success">Unduh Surat</button>
+                <button class="btn btn-primary btn-unduh">Unduh Surat</button>
             </a>
+            </div>
+
             @elseif ($d->status_approved == 2)
             <span class="badge bg-danger">Ditolak</span>
             @endif
