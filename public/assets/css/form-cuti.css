@@ -24,13 +24,20 @@ button {
 
 .date-logo {
     top: 45px;
-    left: 175px;
+    left: 275px;
 }
 
 .sub-form {
     color: #9663fe;
 }
 
-.datepicker-modal{
+.datepicker-modal {
     max-height: 330px !important;
+}
+
+@media only screen and (max-width: 576px) {
+    .date-logo {
+        top: 45px;
+        left: 105px;
+    }
 }
