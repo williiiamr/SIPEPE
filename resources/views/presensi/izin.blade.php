@@ -71,7 +71,7 @@
             <form method="POST" action="{{ route('izin.delete', ['id' => $d->id]) }}" onsubmit="return confirm('Are you sure you want to delete this record?')">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger btn-unduh">Delete</button>
             </form>
             
             @elseif ($d->status_approved == 1)
@@ -120,7 +120,7 @@
 </div>
 @endforeach
 <div class="container mx-0 gx-0 pos-relative">
-    <a href="/presensi/buatizin" class="position-absolute bg-primary add d-flex justify-content-center align-items-center rounded-5">
+    <a href="/presensi/buatizin" class="position-fixed bg-primary add d-flex justify-content-center align-items-center rounded-5">
         +
     </a>
 </div>
