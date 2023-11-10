@@ -7,9 +7,9 @@
                 <h2 class="page-title">
                     Cuti Kehadiran
                 </h2>
-                <h3 class="fs-5">
+                <div class="page-pretitle">
                     Kelola / Cuti Kehadiran
-                </h3>
+                </div>
             </div>
         </div>
     </div>
