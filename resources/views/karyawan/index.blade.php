@@ -1,16 +1,19 @@
 @extends('dashboard.tabler')
 @section('content')
 <div class="page-header d-print-none">
-    <div class="container-xl">
-        <div class="row g-2 align-items-center">
-            <div class="col">
+    <div class="container-fluid">
+        <div class="row g-2 d-flex justify-content-between">
+            <div class="col-10">
                 <!-- Page pre-title -->
-                <div class="page-pretitle">
-                Karyawan
-                </div>
                 <h2 class="page-title">
                 Data Karyawan
                 </h2>
+                <div class="page-pretitle">
+                Kelola / Data Karyawan
+                </div>
+            </div>
+            <div class="col-2 d-flex justify-content-end">
+                <button class='btn btn-primary' id='btntambah'>Tambah Data</button>
             </div>
         </div>
     </div>
@@ -22,8 +25,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-12">
-                                <a href='#' class='btn btn-primary' id='btntambah'>Tambah Data</a>
+                            <div class="col-12 py-1">
+                                <p class="fw-bold fs-3">Data Karyawan</p>
                             </div>
                         </div>
                         <table class="table table-bordered">
