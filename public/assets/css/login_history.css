@@ -599,7 +599,7 @@ li:nth-child(n + 2) {
 }
 
 .content-izin {
-    max-width: 98%;
+    max-width: 50%;
     word-wrap: break-all;
 }
 

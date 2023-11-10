@@ -52,6 +52,7 @@
         @endif
     </div>
 </div>
+<body style="background-color: black;">
 
 @foreach ($dataizin as $d)
 <div class="container-fluid content-izin mt-2" style="border-radius: 10px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
@@ -125,3 +126,4 @@
     </a>
 </div>
 @endsection
+</body>
