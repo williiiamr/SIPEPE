@@ -45,6 +45,7 @@
     <link href="{{ asset('dist/css/tabler-payments.min.css?1685973381') }}" rel="stylesheet"/>
     <link href="{{ asset('dist/css/tabler-vendors.min.css?1685973381') }}" rel="stylesheet"/>
     <link href="{{ asset('dist/css/demo.min.css?1685973381') }}" rel="stylesheet"/>
+    <link href="{{ asset('dist/css/login-admin.css') }}" rel="stylesheet"/>
     <style>
       @import url('https://rsms.me/inter/inter.css');
       :root {
@@ -63,11 +64,12 @@
                 <div class="col-lg">
                     <div class="container-tight">
                         <div class="text-center mb-4">
-                            <a href="." class="navbar-brand navbar-brand-autodark"><img src="../../assets/img/sample/photo/digitalforte.png" height="80" style="margin-top: -25px;" alt=""></a>
+                            <a href="." class="navbar-brand navbar-brand-autodark"><img src="../../assets/img/sample/photo/sikap.png" width="200" style="margin-top: -25px;" alt=""></a>
                         </div>
                         <div class="card card-md">
                             <div class="card-body">
-                                <h2 class="h2 text-center mb-4">Login to your account</h2>
+                                <h2 class="fs-1 fw-bolder text-center mb-0">Login Admin</h2>
+                                <p class="fs-4 text-secondary text-center">Presensi dan Cuti Dalam Satu Genggaman</p>
                                 @if (Session::get('warning'))
                                 <div class="alert alert-warning">
                                     <p>{{ Session::get('warning') }}</p>
@@ -76,12 +78,11 @@
                                 <form action="/prosesloginadmin" method="post" autocomplete="off" novalidate>
                                     @csrf
                                     <div class="mb-3">
-                                    <label class="form-label">Email address</label>
-                                    <input type="email"  name='email' class="form-control" placeholder="your@email.com" autocomplete="off">
+                                    <input type="email"  name='email' class="form-control" placeholder="Email" autocomplete="off">
                                     </div>
                                     <div class="mb-2">
                                     <div class="input-group input-group-flat">
-                                        <input type="password" name='password' class="form-control"  placeholder="Your password"  autocomplete="off">
+                                        <input type="password" name='password' class="form-control"  placeholder="Password"  autocomplete="off">
                                         <span class="input-group-text">
                                         <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
                                             <img src=""
@@ -90,7 +91,7 @@
                                     </div>
                                     </div>
                                     <div class="form-footer">
-                                    <button type="submit" class="btn btn-primary w-100">Sign in</button>
+                                    <button type="submit" class="rounded-2 w-100 fw-bold">LOGIN</button>
                                     </div>
                                 </form>
                             </div>
