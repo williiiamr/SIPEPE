@@ -5,8 +5,11 @@
         <div class="row g-2 align-items-center">
             <div class="col">
                 <h2 class="page-title">
-                    Data Izin / Sakit
+                    Cuti Kehadiran
                 </h2>
+                <h3 class="fs-5">
+                    Kelola / Cuti Kehadiran
+                </h3>
             </div>
         </div>
     </div>
