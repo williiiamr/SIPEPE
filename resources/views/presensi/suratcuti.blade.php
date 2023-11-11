@@ -67,23 +67,8 @@
         </span>
     </div>
     <div class="content">
-        <span style="line-height: 2 ;">Demikian surat 
-            @if ($pengajuanizin->status === 'i')
-                izin
-            @elseif ($pengajuanizin->status === 's')
-                sakit
-            @else
-                {{ $pengajuanizin->status }}
-            @endif
-            ini, mohon kiranya untuk dapat dimaklumi. Atas perhatian serta
-            @if ($pengajuanizin->status === 'i')
-                izin
-            @elseif ($pengajuanizin->status === 's')
-                sakit
-            @else
-                {{ $pengajuanizin->status }}
-            @endif
-            yang diberikan, saya mengucapkan terima kasih.
+        <span style="line-height: 2 ;">
+            Demikian surat cuti ini, mohon kiranya untuk dapat dimaklumi. Atas perhatian serta cuti yang diberikan, saya mengucapkan terima kasih.
         </span>
     </div>
     <br>
@@ -92,9 +77,9 @@
     <div class="content">
         <p style="line-height: 0.1 ; text-indent: 20px;">Direktur</p>
     </div>
-    <img src="assets/img/TTD PT Ressa Abadi.png" alt="img" width="100px" class="content">
+    <img src="data:image/png;base64,'.{{ $imageData }}.'" style="width:115px; height:85px">
     <div class="content">
-        <p style="line-height: 0.1 ;">Stefan Yesaya</p>
+        <p style="line-height: 0.5 ;">Stefan Yesaya</p>
     </div>
 </body>
 </html>

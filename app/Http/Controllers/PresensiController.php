@@ -1,26 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
-use Carbon\Carbon;
-use Dompdf\Dompdf;
-use App\Models\Presensi;
-use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
-use App\Models\Pengajuanizin;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Pengajuanizin;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
 
 // use PDF;
 
 // use Barryvdh\DomPDF\Facade as PDF;
 // use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Contracts\Config\Repository;
 
 class PresensiController extends Controller
 {
@@ -188,17 +188,47 @@ class PresensiController extends Controller
     public function cetak(Request $request){
         $bulan = $request->bulan;
         $tahun = $request->tahun;
-        $namabulan = ['', "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-        $izin = new Pengajuanizin();
+        $namabulan = ['', "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "October", "November", "December"];
+        $presensi = DB::table('presensi')
+        ->selectRaw('presensi.nik, nama,
+        MAX(IF(DAY(tgl_presensi)=1, jam_in, "")) as tgl_1,
+        MAX(IF(DAY(tgl_presensi)=2, jam_in, "")) as tgl_2,
+        MAX(IF(DAY(tgl_presensi)=3, jam_in, "")) as tgl_3,
+        MAX(IF(DAY(tgl_presensi)=4, jam_in, "")) as tgl_4,
+        MAX(IF(DAY(tgl_presensi)=5, jam_in, "")) as tgl_5,
+        MAX(IF(DAY(tgl_presensi)=6, jam_in, "")) as tgl_6,
+        MAX(IF(DAY(tgl_presensi)=7, jam_in, "")) as tgl_7,
+        MAX(IF(DAY(tgl_presensi)=8, jam_in, "")) as tgl_8,
+        MAX(IF(DAY(tgl_presensi)=9, jam_in, "")) as tgl_9,
+        MAX(IF(DAY(tgl_presensi)=10, jam_in, "")) as tgl_10,
+        MAX(IF(DAY(tgl_presensi)=11, jam_in, "")) as tgl_11,
+        MAX(IF(DAY(tgl_presensi)=12, jam_in, "")) as tgl_12,
+        MAX(IF(DAY(tgl_presensi)=13, jam_in, "")) as tgl_13,
+        MAX(IF(DAY(tgl_presensi)=14, jam_in, "")) as tgl_14,
+        MAX(IF(DAY(tgl_presensi)=15, jam_in, "")) as tgl_15,
+        MAX(IF(DAY(tgl_presensi)=16, jam_in, "")) as tgl_16,
+        MAX(IF(DAY(tgl_presensi)=17, jam_in, "")) as tgl_17,
+        MAX(IF(DAY(tgl_presensi)=18, jam_in, "")) as tgl_18,
+        MAX(IF(DAY(tgl_presensi)=19, jam_in, "")) as tgl_19,
+        MAX(IF(DAY(tgl_presensi)=20, jam_in, "")) as tgl_20,
+        MAX(IF(DAY(tgl_presensi)=21, jam_in, "")) as tgl_21,
+        MAX(IF(DAY(tgl_presensi)=22, jam_in, "")) as tgl_22,
+        MAX(IF(DAY(tgl_presensi)=23, jam_in, "")) as tgl_23,
+        MAX(IF(DAY(tgl_presensi)=24, jam_in, "")) as tgl_24,
+        MAX(IF(DAY(tgl_presensi)=25, jam_in, "")) as tgl_25,
+        MAX(IF(DAY(tgl_presensi)=26, jam_in, "")) as tgl_26,
+        MAX(IF(DAY(tgl_presensi)=27, jam_in, "")) as tgl_27,
+        MAX(IF(DAY(tgl_presensi)=28, jam_in, "")) as tgl_28,
+        MAX(IF(DAY(tgl_presensi)=29, jam_in, "")) as tgl_29,
+        MAX(IF(DAY(tgl_presensi)=30, jam_in, "")) as tgl_30,
+        MAX(IF(DAY(tgl_presensi)=31, jam_in, "")) as tgl_31')
+        ->join('karyawan', 'presensi.nik', '=', 'karyawan.nik')
+        ->whereRaw('MONTH(tgl_presensi)="' . $bulan . '"')
+        ->whereRaw('YEAR(tgl_presensi)="' . $tahun . '"')
+        ->groupByRaw('presensi.nik, nama')
+        ->get();
 
-        $presensi = Presensi::select('presensi.nik', 'karyawan.nama')
-            ->join('karyawan', 'presensi.nik', '=', 'karyawan.nik') // Join the 'karyawan' table
-            ->whereYear('tgl_presensi', $tahun)
-            ->whereMonth('tgl_presensi', $bulan)
-            ->groupBy('presensi.nik', 'karyawan.nama')
-            ->get();
-
-        return view('presensi.cetaklaporan', compact('bulan', 'tahun', 'namabulan', 'presensi', "izin"));
+        return view('presensi.cetaklaporan', compact('bulan', 'tahun', 'namabulan', 'presensi'));
     }
 
     public function izin()
@@ -303,60 +333,43 @@ class PresensiController extends Controller
     }
 
     public function suratcuti($id, Repository $config, Filesystem $files, Factory $view)
-{
-    // Ambil data Pengajuanizin berdasarkan ID
-    $pengajuanizin = Pengajuanizin::find($id);
-    $tgl_izin = Pengajuanizin::where('id', $id)->value('tgl_izin');
-
-    if ($pengajuanizin) {
-        $date = Carbon::parse(date('Y-m-d'))->format('j F Y');
-
-        $nama = Auth::guard('karyawan')->user()->nama;
-        $nik = Auth::guard('karyawan')->user()->nik;
-        $jabatan = Auth::guard('karyawan')->user()->jabatan;
-        $tgl_izin = Carbon::parse($tgl_izin)->format('j F Y');
-
-        $data = [
-            'date' => $date,
-            'pengajuanizin' => $pengajuanizin,
-            'nama' => $nama,
-            'nik' => $nik,
-            'jabatan' => $jabatan,
-            'tgl_izin' => $tgl_izin
-        ];
-
-        $dompdf = new Dompdf(); // Buat instansi Dompdf
-        $pdf = new PDF($dompdf, $config, $files, $view, 'A4', 'portrait'); // Gunakan instansi Dompdf, konfigurasi Laravel, Filesystem, dan View Factory sebagai argumen
-        $pdf->loadView('presensi.suratcuti', $data);
-        return $pdf->download('suratcuti.pdf');
-    } else {
-        return "Izin tidak ditemukan."; // Tampilkan pesan jika izin tidak ditemukan
-    }
-}
-
-    public function delete($id)
-        {
-            $izin = Pengajuanizin::find($id);
-
-            if (!$izin) {
-                return redirect()->back()->with('error', 'Record not found.');
-            }
-
-            $izin->delete();
-
-            return redirect()->back()->with('success', 'Record deleted successfully.');
-        }
+    {
+        // Ambil data Pengajuanizin berdasarkan ID
+        $pengajuanizin = Pengajuanizin::find($id);
+        $tgl_izin = Pengajuanizin::where('id', $id)->value('tgl_izin');
+        $imagePath = public_path('assets/img/TTD PT Ressa Abadi.png');
+        $imageData = base64_encode(file_get_contents($imagePath));
     
-    public function deleteadmin($id)
-        {
-            $izin = Pengajuanizin::find($id);
-
-            if (!$izin) {
-                return redirect()->back()->with('error', 'Record not found.');
-            }
-
-            $izin->delete();
-
-            return redirect()->back()->with('success', 'Record deleted successfully.');
+        if ($pengajuanizin) {
+            $date = Carbon::parse(date('Y-m-d'))->format('j F Y');
+        
+            $nama = Auth::guard('karyawan')->user()->nama;
+            $nik = Auth::guard('karyawan')->user()->nik;
+            $jabatan = Auth::guard('karyawan')->user()->jabatan;
+            $tgl_izin = Carbon::parse($tgl_izin)->format('j F Y');
+        
+            $data = [
+                'date' => $date,
+                'pengajuanizin' => $pengajuanizin,
+                'nama' => $nama,
+                'nik' => $nik,
+                'jabatan' => $jabatan,
+                'tgl_izin' => $tgl_izin,
+                'imagePath' => $imagePath,
+                'imageData' => $imageData
+            ];
+        
+            $options = new Options();
+            $options->set('isHtml5ParserEnabled', true);
+            $options->set('tempDir', 'assets/img/TTD PT Ressa Abadi.png');
+            $dompdf = new Dompdf($options);
+            $pdf = new PDF($dompdf, $config, $files, $view, 'A4', 'portrait'); // Gunakan instansi Dompdf, konfigurasi Laravel, Filesystem, dan View Factory sebagai argumen
+            $pdf->loadView('presensi.suratcuti', $data);
+            $pdf->render();
+            return $pdf->download('suratcuti.pdf');
+        } else {
+            return "Izin tidak ditemukan."; // Tampilkan pesan jika izin tidak ditemukan
         }
+    }
+
 }
