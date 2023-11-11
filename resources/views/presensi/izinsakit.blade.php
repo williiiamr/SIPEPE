@@ -5,8 +5,11 @@
         <div class="row g-2 align-items-center">
             <div class="col">
                 <h2 class="page-title">
-                    Data Izin / Sakit
+                    Cuti Kehadiran
                 </h2>
+                <div class="page-pretitle">
+                    Kelola / Cuti Kehadiran
+                </div>
             </div>
         </div>
     </div>
@@ -17,7 +20,7 @@
             <div class="col-12">
                 <form action="/presensi/izinsakit" method="GET" autocomplete="off">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="input-icon mb-3">
                                 <span class="input-icon-addon">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/user -->
@@ -34,7 +37,7 @@
                                 <input type="text" class="form-control" placeholder="Dari" name='dari' id='dari' value="{{ Request('dari') }}">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="input-icon mb-3">
                                 <span class="input-icon-addon">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/user -->
@@ -51,9 +54,7 @@
                                 <input type="text" class="form-control" placeholder="Sampai" name='sampai' id='sampai' value="{{ Request('sampai') }}">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">
+                        <div class="col-4">
                             <div class="input-icon mb-3">
                                 <span class="input-icon-addon">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/user -->
@@ -69,7 +70,9 @@
                                 <input type="text" class="form-control" placeholder="NIK" name='nik' id='nik' value="{{ Request('nik') }}">
                             </div>
                         </div>
-                        <div class="col-3">
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
                             <div class="input-icon mb-3">
                                 <span class="input-icon-addon">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/user -->
@@ -83,7 +86,7 @@
                                 <input type="text" class="form-control" placeholder="Nama Karyawan" name='nama' id='nama' value="{{ Request('nama') }}">
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <div class="form-group">
                                 <select name="status_approved" id="status_approved" class="form-select">
                                     <option value="">Pilih Status</option>
@@ -93,9 +96,9 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <div class="form-group">
-                                <button class="btn btn-primary" type="submit">
+                                <button class="btn btn-primary w-full flex justify-content-start" type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-zoom-exclamation" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                        <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>

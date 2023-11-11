@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>A4</title>
+  <title>Rekap Presensi Bulanan</title>
 
   <!-- Normalize or reset CSS with your favorite library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
@@ -56,10 +56,10 @@
         </td>
         <td> 
           <span id='judul'>
-            PT. Digital Forte Indonesia<br>
+            PT. Ressa Abadi Bersama<br>
             Laporan Presensi Karyawan Bulan {{ $namabulan[$bulan] }} {{ $tahun }}
           </span><br>
-          <span style="line-height: 5px;">Jl. Kamboja 1, Mekar Jaya, Kec. Sukmajaya, Kota Depok, Jawa Barat 16411</span>
+          <span style="line-height: 5px;">Jl. apa</span>
         </td>
       </tr>
     </table>
